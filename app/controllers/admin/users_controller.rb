@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  protect_from_forgery 
+  protect_from_forgery :except => [:new, :create, :update]
   
   def index
     @users = User.all
