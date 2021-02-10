@@ -10,21 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_07_120415) do
+ActiveRecord::Schema.define(version: 2021_02_10_150835) do
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", null: false
-    t.string "password_digest", null: false
-    t.string "purpose"
-    t.string "activity_level"
-    t.float "height"
-    t.float "body_mass"
-    t.float "body_fat_percent"
+  create_table "cooks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.float "protein"
+    t.float "fat"
+    t.float "carbon_hydrate"
+    t.float "kcal"
+    t.float "amount"
+    t.string "description"
+    t.integer "date"
+    t.text "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin", default: false, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
