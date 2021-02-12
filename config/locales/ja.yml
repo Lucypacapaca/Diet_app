@@ -1,19 +1,30 @@
 ---
 ja:
   activerecord:
-    attributes:
-      user:
-        name: 名前
-        email: メールアドレス
-        password: パスワード
-        activated: アクティブフラグ
-        admin: 管理者フラグ
+    #attributes:
+      #user:
+        #name: 名前
+        #email: メールアドレス
+        #password: パスワード
+        #activated: アクティブフラグ
+        #admin: 管理者フラグ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      cook: 食事
+    attributes:
+      cook:
+        id: ID
+        name: 食品名
+        protein: タンパク質
+        fat: 脂質
+        carbon_hydrate: 炭水化物
+        memo: メモ 
+        amount: グラム
   date:
     abbr_day_names:
     - 日

@@ -5,8 +5,8 @@ html
       | ダイエットレーニングアプリ
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
   body
     .app-title.navber.navber-expand-md.navbar-light.bg-light
       .navbar-brand ダイエットレーニングアプリ
@@ -19,7 +19,7 @@ html
         - else 
           li.nav-item= link_to 'ログイン', '#', class: 'nav-link'
 
-      .container
-        - if flash.notice.present?
-          .alert.alert-success= flash.notice
-        = yield
+    .container
+      - if flash.notice.present?
+        .alert.alert-success= flash.notice
+      = yield

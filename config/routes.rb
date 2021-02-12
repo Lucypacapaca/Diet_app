@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   #post 'admin/users/new', to: 'admin/users#new'
   #post 'admin/users/edit', to: 'admin/users#edit'
 
-  root to:'cooking#index'
-  resources :cooking
+  get 'cooks/new'
+
+  root to:'cooks#index'
+  resources :cooks
 
   #root to:'admin/users#index'
 

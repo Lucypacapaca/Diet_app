@@ -1,0 +1,23 @@
+h1 食事
+
+= link_to '追加', cooks_new_path, class: 'btn btn-primary'
+
+.mb-3 
+table.table.table-hover 
+  thead.thead-default 
+    tr 
+      th= Cook.human_attribute_name(:name)
+      th= Cook.human_attribute_name(:description)
+      th= Cook.human_attribute_name(:protein)
+      th= Cook.human_attribute_name(:fat)
+      th= Cook.human_attribute_name(:carbon_hydrate)
+      th= Cook.human_attribute_name(:amount)
+  tbody 
+    - @cooks.each do |cook|
+      tr 
+        td= cook.name 
+        td= cook.description 
+        td= cook.protein 
+        td= cook.fat 
+        td= cook.carbon_hydrate 
+        td= cook.amount
