@@ -1,23 +1,148 @@
+head
+  meta charset="utf-8" /
+  /! Bootstrap用CSSの読み込み
+  link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" /
+  /! Bootstrap用JavaScriptの読み込み
+  script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+  script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+  script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+
+
+
 h1 食事
 
 = link_to '追加', cooks_new_path, class: 'btn btn-primary'
 
-.mb-3 
-table.table.table-hover 
-  thead.thead-default 
-    tr 
-      th= Cook.human_attribute_name(:name)
-      th= Cook.human_attribute_name(:description)
-      th= Cook.human_attribute_name(:protein)
-      th= Cook.human_attribute_name(:fat)
-      th= Cook.human_attribute_name(:carbon_hydrate)
-      th= Cook.human_attribute_name(:amount)
-  tbody 
-    - @cooks.each do |cook|
-      tr 
-        td= cook.name 
-        td= cook.description 
-        td= cook.protein 
-        td= cook.fat 
-        td= cook.carbon_hydrate 
-        td= cook.amount
+///
+
+body
+  main.p-3
+    ul.nav.nav-tabs
+      li.nav-item
+        a.nav-link.active data-toggle="tab" href="#morning"  朝食
+      li.nav-item
+        a.nav-link data-toggle="tab" href="#lunch"  昼食
+      li.nav-item
+        a.nav-link data-toggle="tab" href="#diner"  夕食
+      li.nav-item
+        a.nav-link data-toggle="tab" href="#other"  その他
+    .tab-content
+      .tab-pane.active id="#morning" 
+        .mb-3 
+        table.table.table-hover 
+          thead.thead-default 
+            tr 
+              th= Cook.human_attribute_name(:name)
+              th= Cook.human_attribute_name(:description)
+              th= Cook.human_attribute_name(:protein)
+              th= Cook.human_attribute_name(:fat)
+              th= Cook.human_attribute_name(:carbon_hydrate)
+              th= Cook.human_attribute_name(:amount)
+              th= Cook.human_attribute_name(:kcal)
+
+            tbody 
+              - @cooks.each do |cook|
+                tr 
+                  td= cook.name 
+                  td= cook.description 
+                  td= cook.protein 
+                  td= cook.fat 
+                  td= cook.carbon_hydrate 
+                  td= cook.amount
+                  td= cook.kcal
+
+      .tab-pane id="#lunch" 
+        .mb-3 
+        table.table.table-hover 
+          thead.thead-default 
+            tr 
+              th= Cook.human_attribute_name(:name)
+              th= Cook.human_attribute_name(:description)
+              th= Cook.human_attribute_name(:protein)
+              th= Cook.human_attribute_name(:fat)
+              th= Cook.human_attribute_name(:carbon_hydrate)
+              th= Cook.human_attribute_name(:amount)
+              th= Cook.human_attribute_name(:kcal)
+
+            tbody 
+              - @cooks.each do |cook|
+                tr 
+                  td= cook.name 
+                  td= cook.description 
+                  td= cook.protein 
+                  td= cook.fat 
+                  td= cook.carbon_hydrate 
+                  td= cook.amount
+                  td= cook.kcal
+      .tab-pane id="#diner" 
+        .mb-3 
+        table.table.table-hover 
+          thead.thead-default 
+            tr 
+              th= Cook.human_attribute_name(:name)
+              th= Cook.human_attribute_name(:description)
+              th= Cook.human_attribute_name(:protein)
+              th= Cook.human_attribute_name(:fat)
+              th= Cook.human_attribute_name(:carbon_hydrate)
+              th= Cook.human_attribute_name(:amount)
+              th= Cook.human_attribute_name(:kcal)
+
+            tbody 
+              - @cooks.each do |cook|
+                tr 
+                  td= cook.name 
+                  td= cook.description 
+                  td= cook.protein 
+                  td= cook.fat 
+                  td= cook.carbon_hydrate 
+                  td= cook.amount
+                  td= cook.kcal
+      .tab-pane id="#other" 
+        .mb-3 
+        table.table.table-hover 
+          thead.thead-default 
+            tr 
+              th= Cook.human_attribute_name(:name)
+              th= Cook.human_attribute_name(:description)
+              th= Cook.human_attribute_name(:protein)
+              th= Cook.human_attribute_name(:fat)
+              th= Cook.human_attribute_name(:carbon_hydrate)
+              th= Cook.human_attribute_name(:amount)
+              th= Cook.human_attribute_name(:kcal)
+
+            tbody 
+              - @cooks.each do |cook|
+                tr 
+                  td= cook.name 
+                  td= cook.description 
+                  td= cook.protein 
+                  td= cook.fat 
+                  td= cook.carbon_hydrate 
+                  td= cook.amount
+                  td= cook.kcal
+
+
+
+///
+/ .mb-3 
+/ table.table.table-hover 
+/   thead.thead-default 
+/     tr 
+/       th= Cook.human_attribute_name(:name)
+/       th= Cook.human_attribute_name(:description)
+/       th= Cook.human_attribute_name(:protein)
+/       th= Cook.human_attribute_name(:fat)
+/       th= Cook.human_attribute_name(:carbon_hydrate)
+/       th= Cook.human_attribute_name(:amount)
+/       th= Cook.human_attribute_name(:kcal)
+
+/   tbody 
+/     - @cooks.each do |cook|
+/       tr 
+/         td= cook.name 
+/         td= cook.description 
+/         td= cook.protein 
+/         td= cook.fat 
+/         td= cook.carbon_hydrate 
+/         td= cook.amount
+/         td= cook.kcal

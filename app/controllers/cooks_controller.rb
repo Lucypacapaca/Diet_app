@@ -16,8 +16,8 @@ class CooksController < ApplicationController
   end
 
   def create
-    cook = Cook.new(cook_params)
-    cook.save!
+    @cook = Cook.new(cook_params)
+    @cook.save!
     redirect_to cooks_url, notice: "登録しました"
   end
 
@@ -27,5 +27,9 @@ class CooksController < ApplicationController
     params.require(:cook).permit(:name, :description, :protein, :fat, :carbon_hydrate, :amount)
   end
 
-  
+  def cook_kcal
+    cook_params.merge(@cook.kcal)
+  end
+
+
 end
