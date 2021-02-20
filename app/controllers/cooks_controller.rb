@@ -5,9 +5,16 @@ class CooksController < ApplicationController
     @cook = Cook.new
   end
   
+  
   def index
     @cooks = Cook.all
   end
+
+  def search
+  end
+
+
+
 
   def show
   end

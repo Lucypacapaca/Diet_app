@@ -70,3 +70,6 @@ gem 'html2slim'
 
 #CSSを使えるようにする
 gem 'bootstrap'
+
+#検索機能を使えるようにする
+gem 'ransack'

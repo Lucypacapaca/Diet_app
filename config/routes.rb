@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #post 'admin/users/edit', to: 'admin/users#edit'
 
   get 'cooks/new'
+  get 'cooks/search'
 
   root to:'cooks#index'
   resources :cooks
