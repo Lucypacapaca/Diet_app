@@ -1,2 +1,9 @@
-h1 Cooking#show
-p Find me in app/views/cooking/show.html.slim
+h1 レシピ検索
+=search_form_for @q, class: 'mb-5' do |f|
+  .form-group.row 
+    = f.label :name_cont, '食材', class: 'col-sm-2 col-form-label'
+    .col-sm-10 
+      = f.search_field :name_cont, class: 'form-control'
+  .form-group 
+    = f.submit class: 'btn btn-outline-primary'
+

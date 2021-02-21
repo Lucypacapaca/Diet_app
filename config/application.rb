@@ -15,7 +15,7 @@ module TrainingApp4
 
     # Railsアプリデフォルトのタイムゾーン(default 'UTC')
     # TimeZoneList: http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
-    config.time_zone = ENV["TZ"]
+    config.time_zone = 'Asia/Tokyo'
 
     # i18nで使われるデフォルトのロケールファイルの指定(default :en)
     config.i18n.default_locale = :ja

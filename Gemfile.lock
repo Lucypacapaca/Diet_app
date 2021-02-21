@@ -88,7 +88,7 @@ GEM
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
-    i18n (1.8.8)
+    i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
     jbuilder (2.11.2)
@@ -251,4 +251,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   1.17.3
+   1.17.2

@@ -1,20 +1,30 @@
 Rails.application.routes.draw do
+  # resource :cooks do
+  #   get 'new'
+  #   get 'edit'
+  # end
+  #get 'cooks/new'
+  
+  # resources :cooks do
+  #   member do
+  #     get 'edit'
+  #   end
+  # end
 
-  #get '/login', to: 'sessions#new'
-  #post '/login', to: 'sessions#create'
-  #delete '/logout', to: 'sessions#destroy'
- # get 'admin/users/new', to: 'admin/users#new'
-  #get 'admin/users/edit', to: 'admin/users#edit'
-  #post 'admin/users/new', to: 'admin/users#new'
-  #post 'admin/users/edit', to: 'admin/users#edit'
+  resources :cooks, only: [:index, :show, :create, :destroy, :edit] do
+  end
+
+  #get 'cooks/new'
+  # get 'cooks/search'
+  #get 'cooks/edit'
+
+  #post '/cooks', to: 'cooks#delete' 
+ # post '/cooks', to: 'cooks#update' 
 
   get 'cooks/new'
-  get 'cooks/search'
-
+  post 'cooks/:id', to: 'cooks#update'
   root to:'cooks#index'
-  resources :cooks
-
-  #root to:'admin/users#index'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  #resources :cooks
+ 
+  #get 'cooks/:id/edit'
 end

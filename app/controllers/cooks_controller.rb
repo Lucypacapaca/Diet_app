@@ -1,37 +1,49 @@
 class CooksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  def new
-    @cook = Cook.new
-  end
-  
-  
   def index
     @cooks = Cook.all
   end
 
-  def search
+  def show
+    @cook = Cook.find(params[:id])
   end
 
-
-
-
-  def show
+  def new
+    @cook = Cook.new
   end
 
   def edit
+    @cook = Cook.find(params[:id])
+  end
+  
+  def update
+    cook = Cook.find(params[:id])
+    cook.update!(cook_params)
+    redirect_to cooks_url
+  end
+
+  def destroy
+    cook = Cook.find(params[:id])
+    cook.destroy
+    redirect_to cooks_url
   end
 
   def create
     @cook = Cook.new(cook_params)
     @cook.save!
-    redirect_to cooks_url, notice: "登録しました"
+    redirect_to cooks_url
+  end
+
+  def search
+    #@q = cooks.ransack[params[:q]]
+    #@cooks = @q.result(distinct: true).recent
   end
 
   private
 
   def cook_params
-    params.require(:cook).permit(:name, :description, :protein, :fat, :carbon_hydrate, :amount)
+    params[:cook].permit(:name, :description, :protein, :fat, :carbon_hydrate, :amount)
   end
 
   def cook_kcal

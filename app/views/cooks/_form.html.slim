@@ -1,0 +1,20 @@
+= form_with model: cook, method: :patch, local: true do |f|
+  .form-group 
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'cook_name'
+  .form-group 
+    = f.label :description
+    = f.text_field :description, class: 'form-control', id: 'cook_description'
+  .form-group 
+    = f.label :protein
+    = f.text_field :protein, class: 'form-control', id: 'cook_protein'
+  .form-group 
+    = f.label :fat
+    = f.text_field :fat, class: 'form-control', id: 'cook_fat'
+  .form-group 
+    = f.label :carbon_hydrate
+    = f.text_field :carbon_hydrate, class: 'form-control', id: 'cook_carbon_hydrate'
+  .form-group 
+    = f.label :amount
+    = f.text_field :amount, class: 'form-control', id: 'cook_amount'
+  = f.submit nil, class: 'btn btn-primary'
