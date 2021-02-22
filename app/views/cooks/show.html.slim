@@ -32,4 +32,6 @@ table.table.table-hover
     tr 
       th= Cook.human_attribute_name(:updated_at)
       td= @cook.updated_at
+      
+= link_to '編集', edit_cook_path, class: 'btn btn-primary mr-3'
 = link_to '削除', @cook, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'

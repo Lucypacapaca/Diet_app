@@ -18,13 +18,13 @@ class CooksController < ApplicationController
   end
   
   def update
-    cook = Cook.find_by(params[:id])
+    cook = Cook.find(params[:id])
     cook.update!(cook_params)
     redirect_to cooks_url
   end
 
   def destroy
-    cook = Cook.find_by(params[:id])
+    cook = Cook.find(params[:id])
     cook.destroy
     redirect_to cooks_url
   end

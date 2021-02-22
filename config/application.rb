@@ -20,7 +20,7 @@ module TrainingApp4
     # i18nで使われるデフォルトのロケールファイルの指定(default :en)
     config.i18n.default_locale = :ja
 
-    config.api_only = true
+    #config.api_only = true
     config.middleware.use ActionDispatch::Flash
   end
 end
