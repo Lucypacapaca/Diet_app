@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  resources :cooks, only: [:index, :show, :create, :destroy, :edit] do
+  resources :cooks, only: [:index, :show, :create, :edit, :new, :destroy] do
   end
 
   #get 'cooks/new'
@@ -21,8 +21,12 @@ Rails.application.routes.draw do
   #post '/cooks', to: 'cooks#delete' 
  # post '/cooks', to: 'cooks#update' 
 
-  get 'cooks/new'
+  #get 'cooks/new'
+ 
   post 'cooks/:id', to: 'cooks#update'
+  #patch 'cooks/:id', to: 'cooks#update'
+  
+  #delete 'cooks/:id', to: 'cooks#destroy'
   root to:'cooks#index'
   #resources :cooks
  

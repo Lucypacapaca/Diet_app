@@ -73,3 +73,7 @@ gem 'bootstrap'
 
 #検索機能を使えるようにする
 gem 'ransack'
+
+#gem 'jquery-rails'
+#gem 'fullcalendar-rails'
+#gem 'momentjs-rails'

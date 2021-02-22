@@ -6,6 +6,9 @@ h1 食品詳細
 table.table.table-hover 
   tbody 
     tr 
+      th= Cook.human_attribute_name(:id)
+      td= @cook.id
+    tr 
       th= Cook.human_attribute_name(:description)
       td= @cook.description
     tr 

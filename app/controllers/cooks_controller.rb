@@ -18,20 +18,20 @@ class CooksController < ApplicationController
   end
   
   def update
-    cook = Cook.find(params[:id])
+    cook = Cook.find_by(params[:id])
     cook.update!(cook_params)
     redirect_to cooks_url
   end
 
   def destroy
-    cook = Cook.find(params[:id])
+    cook = Cook.find_by(params[:id])
     cook.destroy
     redirect_to cooks_url
   end
 
   def create
-    @cook = Cook.new(cook_params)
-    @cook.save!
+    cook = Cook.new(cook_params)
+    cook.save!
     redirect_to cooks_url
   end
 
@@ -43,7 +43,12 @@ class CooksController < ApplicationController
   private
 
   def cook_params
-    params[:cook].permit(:name, :description, :protein, :fat, :carbon_hydrate, :amount)
+    #params[:cook].permit(:name, :description, :protein, :fat, :carbon_hydrate, :amount)
+    #params.require(:cook).permit(:name, :description, :protein, :fat, :carbon_hydrate, :amount)
+    #params.require(:cook).permit!
+    params.require(:cook).permit(:name, :description, :protein, :fat, :carbon_hydrate, :amount)
+
+    #{ cook_id: params[:cook_id]}
   end
 
   def cook_kcal
