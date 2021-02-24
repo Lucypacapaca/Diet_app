@@ -1,12 +1,13 @@
 class CooksController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :set_cook, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cooks = Cook.all
+    @cooks = current_user.cooks.order(created_at: :desc)
   end
 
   def show
-    @cook = Cook.find(params[:id])
+    #@cook = current_user.cooks.find(params[:id])
   end
 
   def new
@@ -14,25 +15,29 @@ class CooksController < ApplicationController
   end
 
   def edit
-    @cook = Cook.find(params[:id])
+    #@cook = current_user.cooks.find(params[:id])
   end
   
   def update
-    cook = Cook.find(params[:id])
+    #cook = current_user.cooks.find(params[:id])
     cook.update!(cook_params)
     redirect_to cooks_url
   end
 
   def destroy
-    cook = Cook.find(params[:id])
+    #cook = current_user.cooks.find(params[:id])
     cook.destroy
     redirect_to cooks_url
   end
 
   def create
-    cook = Cook.new(cook_params)
-    cook.save!
-    redirect_to cooks_url
+    @cook = current_user.cooks.new(cook_params)
+
+    if @cook.save
+      redirect_to cooks_url
+    else
+      render :new
+    end
   end
 
   def search
@@ -53,6 +58,10 @@ class CooksController < ApplicationController
 
   def cook_kcal
     cook_params.merge(@cook.kcal)
+  end
+
+  def set_cook
+    @cook = current_user.cook.find(params[:id])
   end
 
 

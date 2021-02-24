@@ -1,9 +1,26 @@
 class Cook < ApplicationRecord
+    before_validation :set_nameless_name
+
+    with_options numericality: true do
+        validates :protein
+        validates :fat
+        validates :carbon_hydrate
+        validates :amount
+    end
+
     def kcal
         4*protein + 9*fat + 4*carbon_hydrate
     end
 
-    #def set_kcal
-       # { kcal: kcal }
-    #end
+    belongs_to :user
+
+    scope :recent, -> { order(created_at: :desc) }
+
+    private
+    
+    def set_nameless_name
+        self.name = '食べ物' if name.blank? 
+    end
+
+    
 end

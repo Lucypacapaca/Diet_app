@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_073219) do
+ActiveRecord::Schema.define(version: 2021_02_24_075121) do
 
   create_table "cooks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_073219) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "start_time"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_cooks_on_user_id"
   end
 
   create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -34,6 +36,20 @@ ActiveRecord::Schema.define(version: 2021_02_23_073219) do
     t.float "carbon_hydrate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.float "body_mass"
+    t.float "body_fat_percentage"
+    t.string "purpose"
+    t.string "activity_level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "admin", default: false, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

@@ -28,6 +28,19 @@ ja:
         amount: グラム
         created_at: 作成日時
         updated_at: 更新日時
+      user:
+        name: ユーザー
+        email: メールアドレス
+        admin: 管理者権限
+        password: パスワード
+        password_confirmation: パスワード(確認)
+        body_mass: 体重
+        body_fat_percentage: 体脂肪率
+        purpose: 目的
+        activity_level: 活動レベル
+        created_at: 作成日時
+        updated_at: 更新日時
+      
   date:
     abbr_day_names:
     - 日
