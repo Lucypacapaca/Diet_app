@@ -28,6 +28,8 @@ ja:
         amount: グラム
         created_at: 作成日時
         updated_at: 更新日時
+        Previous: 前月
+        Next: 来月
       user:
         name: ユーザー
         email: メールアドレス

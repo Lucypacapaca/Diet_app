@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_075121) do
+ActiveRecord::Schema.define(version: 2021_02_24_133619) do
 
   create_table "cooks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_075121) do
     t.float "carbon_hydrate", default: 1.0, null: false
     t.float "kcal", default: 1.0, null: false
     t.float "amount", default: 1.0, null: false
-    t.string "description", null: false
     t.text "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
