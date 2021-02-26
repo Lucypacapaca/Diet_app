@@ -43,6 +43,8 @@ ja:
         activity_level: 活動レベル
         created_at: 作成日時
         updated_at: 更新日時
+        tall: 身長
+        age: 年齢
       
   date:
     abbr_day_names:

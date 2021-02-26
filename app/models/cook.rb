@@ -14,7 +14,7 @@ class Cook < ApplicationRecord
 
     belongs_to :user
 
-    scope :recent, -> { order(created_at: :desc) }
+    scope :recent, -> { order(start_time: :desc) }
 
     private
     

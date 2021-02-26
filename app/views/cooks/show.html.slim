@@ -21,8 +21,8 @@ table.table.table-hover
       th= Cook.human_attribute_name(:amount)
       td= @cook.amount
     tr 
-      th= Cook.human_attribute_name(:select_day)
-      td= @cook.select_day
+      th= Cook.human_attribute_name(:start_time)
+      td= @cook.start_time
     
 = link_to '編集', edit_cook_path, class: 'btn btn-primary mr-3'
 = link_to '削除', @cook, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'

@@ -27,9 +27,15 @@
     = f.label :body_fat_percentage, '体脂肪率(任意)'
     = f.text_field  :body_fat_percentage, class: 'form-control'
   .form-group 
+    = f.label :tall, '身長(任意)'
+    = f.text_field  :tall, class: 'form-control'
+  .form-group 
+    = f.label :age, '年齢(任意)'
+    = f.text_field  :age, class: 'form-control'
+  .form-group 
     = f.label :purpose, '目的(任意)'
     = f.select :purpose, {'増量': 1, '維持': 2, '減量': 3}, { iclude_blank: '選択してください' }, class: 'form-control'
   .form-group 
     = f.label :activity_level, '活動レベル(任意)'
-    = f.password_field :activity_level, {'高': 1, '中': 2, '低': 3}, { iclude_blank: '選択してください' }, class: 'form-control'
+    = f.select  :activity_level, {'高': 1, '中': 2, '低': 3}, { iclude_blank: '選択してください' }, class: 'form-control'
   = f.submit '登録する', class: 'btn btn-primary'

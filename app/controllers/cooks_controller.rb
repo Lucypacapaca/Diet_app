@@ -3,7 +3,7 @@ class CooksController < ApplicationController
   before_action :set_cook, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cooks = current_user.cooks.order(select_day: :desc)
+    @cooks = current_user.cooks.order(start_time: :desc)
   end
 
   def show
@@ -43,13 +43,13 @@ class CooksController < ApplicationController
   end
 
   def cooklist
-    @cooklist = current_user.cooks.order(select_day: :desc)
+    @cooklist = current_user.cooks.order(start_time: :desc)
   end
 
   private
 
   def cook_params
-    params.require(:cook).permit(:name, :protein, :fat, :carbon_hydrate, :amount, :select_day)
+    params.require(:cook).permit(:name, :protein, :fat, :carbon_hydrate, :amount, :start_time)
     
   end
 
