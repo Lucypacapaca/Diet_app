@@ -19,4 +19,7 @@
   .form-group 
     = f.label :amount
     = f.text_field :amount, class: 'form-control', id: 'cook_amount'
+  .form-group 
+    = f.label :select_day
+    = f.date_select :select_day, class: 'form-control', id: 'cook_select_day'
   = f.submit nil, class: 'btn btn-primary'

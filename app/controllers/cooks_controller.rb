@@ -3,7 +3,7 @@ class CooksController < ApplicationController
   before_action :set_cook, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cooks = current_user.cooks.order(created_at: :desc)
+    @cooks = current_user.cooks.order(select_day: :desc)
   end
 
   def show
@@ -18,7 +18,7 @@ class CooksController < ApplicationController
   end
   
   def update
-    cook.update!(cook_params)
+    @cook.update!(cook_params)
     redirect_to cooks_url
   end
 
@@ -42,10 +42,15 @@ class CooksController < ApplicationController
     #@cooks = @q.result(distinct: true).recent
   end
 
+  def cooklist
+    @cooklist = current_user.cooks.order(select_day: :desc)
+  end
+
   private
 
   def cook_params
-    params.require(:cook).permit(:name, :protein, :fat, :carbon_hydrate, :amount)
+    params.require(:cook).permit(:name, :protein, :fat, :carbon_hydrate, :amount, :select_day)
+    
   end
 
   def cook_kcal
@@ -53,7 +58,7 @@ class CooksController < ApplicationController
   end
 
   def set_cook
-    @cook = current_user.cook.find(params[:id])
+    @cook = current_user.cooks.find(params[:id])
   end
 
 

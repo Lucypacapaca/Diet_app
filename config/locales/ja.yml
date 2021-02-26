@@ -30,6 +30,7 @@ ja:
         updated_at: 更新日時
         Previous: 前月
         Next: 来月
+        start_time: 食べた日
       user:
         name: ユーザー
         email: メールアドレス

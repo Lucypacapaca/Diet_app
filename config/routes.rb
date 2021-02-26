@@ -8,7 +8,14 @@ Rails.application.routes.draw do
   end
  
   root to:'cooks#index'
-  resources :cooks
+  resources :cooks do
+    collection do
+      get 'cooklist'
+      end
+  end
+  #get "cooks/list" => "cooks#list"
+
+ 
  
 
 end

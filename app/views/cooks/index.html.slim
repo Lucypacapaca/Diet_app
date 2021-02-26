@@ -15,6 +15,7 @@ table.table.table-hover
       th= Cook.human_attribute_name(:carbon_hydrate)
       th= Cook.human_attribute_name(:amount)
       th= Cook.human_attribute_name(:kcal)
+      th= Cook.human_attribute_name(:select_day)
       th
 
   tbody 
@@ -26,6 +27,7 @@ table.table.table-hover
         td= cook.carbon_hydrate 
         td= cook.amount
         td= cook.kcal
+        td= cook.select_day
         td
           = link_to '編集', edit_cook_path(cook), class: 'btn btn-primary mr-3'
           = link_to '削除', cook, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'
@@ -34,7 +36,7 @@ table.table.table-hover
 = month_calendar events: @cooks do |date, cooks|
   = date.day
   -cooks.each do |cook|
-      = cook.name
+    = link_to '詳細', cooklist_cooks_path
 
       
       

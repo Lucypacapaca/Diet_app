@@ -1,0 +1,24 @@
+.mb-3 
+table.table.table-hover
+  thead.thead-default
+    tr 
+      th= Cook.human_attribute_name(:name)
+      th= Cook.human_attribute_name(:protein)
+      th= Cook.human_attribute_name(:fat)
+      th= Cook.human_attribute_name(:carbon_hydrate)
+      th= Cook.human_attribute_name(:amount)
+      th= Cook.human_attribute_name(:kcal)
+      th
+
+  tbody 
+    - @cooklist.each do |cooklist|
+      tr 
+        td= link_to cooklist.name, cooklist
+        td= cooklist.protein 
+        td= cooklist.fat 
+        td= cooklist.carbon_hydrate 
+        td= cooklist.amount
+        td= cooklist.kcal
+        td
+          = link_to '編集', edit_cook_path(cooklist), class: 'btn btn-primary mr-3'
+          = link_to '削除', cooklist, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'
