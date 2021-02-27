@@ -3,7 +3,7 @@ class CooksController < ApplicationController
   before_action :set_cook, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cooks = current_user.cooks.order(start_time: :desc)
+      @cooks = current_user.cooks.order(start_time: :desc) #.select(:select_day)
   end
 
   def show
@@ -23,7 +23,7 @@ class CooksController < ApplicationController
   end
 
   def destroy
-    cook.destroy
+    @cook.destroy
     redirect_to cooks_url
   end
 
@@ -42,9 +42,9 @@ class CooksController < ApplicationController
     #@cooks = @q.result(distinct: true).recent
   end
 
-  def cooklist
-    @cooklist = current_user.cooks.order(start_time: :desc)
-  end
+  #def cooklist
+    #@cooklist = current_user.cooks.order(start_time: :desc)
+  #end
 
   private
 

@@ -10,7 +10,20 @@ html
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
       .navbar-brand ダイエットアプリ
-    
+
+      ul.navbar-nav.mr-auto
+         - if current_user
+           /li.nav-item = form_with model: cook, local: true do |f|
+             .form-group 
+               li.nav-item = f.date_select :start_time, class: 'form-control', id: 'cook_start_time'
+               li.nav-item = f.submit nil, class: 'btn btn-primary'
+           /input type= "date" value= :select_day
+           form action="cooks" method="get" 
+            p
+              input name="select_day" type="date" 
+              input type="submit" value="更新" 
+
+
       ul.navbar-nav.ml-auto
          - if current_user
            li.nav-item = link_to '食事', cooks_path, class: 'nav-link'
