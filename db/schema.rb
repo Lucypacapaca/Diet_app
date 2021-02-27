@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_134146) do
+ActiveRecord::Schema.define(version: 2021_02_27_135502) do
 
   create_table "cooks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_02_26_134146) do
     t.boolean "admin", default: false, null: false
     t.float "tall"
     t.integer "age"
+    t.string "sex"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

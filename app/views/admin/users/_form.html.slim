@@ -10,7 +10,7 @@
   .form-group 
     = f.label :email, 'メールアドレス'
     = f.text_field :email, class: 'form-control'
-  .form-check
+  /.form-check
     = f.label :admin, class: 'form-check-label' do
       = f.check_box :admin, class: 'form-check-input'
       | 管理者権限
@@ -32,6 +32,9 @@
   .form-group 
     = f.label :age, '年齢(任意)'
     = f.text_field  :age, class: 'form-control'
+  .form-group 
+    = f.label :sex, '性別(任意)'
+    = f.select  :sex, {'男性': 1, '女性': 2, 'その他': 3}, { iclude_blank: '選択してください' }, class: 'form-control'
   .form-group 
     = f.label :purpose, '目的(任意)'
     = f.select :purpose, {'増量': 1, '維持': 2, '減量': 3}, { iclude_blank: '選択してください' }, class: 'form-control'

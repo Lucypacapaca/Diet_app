@@ -14,7 +14,7 @@ table.table.table-hover
     tr 
       th= User.human_attribute_name(:email)
       td= @user.email
-    tr 
+    /tr 
       th= User.human_attribute_name(:admin)
       td= @user.admin? ? 'あり' : 'なし'
     tr 
@@ -30,12 +30,43 @@ table.table.table-hover
       th= User.human_attribute_name(:age)
       td= @user.age
     tr 
+      th= User.human_attribute_name(:sex)
+      td= @user.sex
+    tr 
       th= User.human_attribute_name(:purpose)
       td= @user.purpose
     tr 
       th= User.human_attribute_name(:activity_level)
       td= @user.activity_level
-      
+
+
+.mb-10
+table.table.table-hover
+  thead.thead-default
+    tr 
+      th= User.human_attribute_name(:require_protein)
+      th= User.human_attribute_name(:require_fat)
+      th= User.human_attribute_name(:require_carbon_hydrate)
+      th= User.human_attribute_name(:require_kcal)
+      th
+
+  tbody 
+    tr 
+      td= @user.require_protein
+      td= @user.require_fat
+      td= @user.require_carbon_hydrate
+      td= @user.require_kcal
+
+    /- asset_path('start_time.json')
+    /- @users.each do |user|
+      tr 
+        td= cook.require_protein 
+        td= cook.require_fat 
+        td= cook.require_carbon_hydrate 
+        td= cook.require_kcal
+        td
+
+
 = link_to '編集', edit_admin_user_path, class: 'btn btn-primary mr-3'
 = link_to '削除', [:admin, @user], method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-danger'
 

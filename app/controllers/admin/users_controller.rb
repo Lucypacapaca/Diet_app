@@ -48,7 +48,7 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :admin, :password, :password_confirmation, 
-      :body_mass, :body_fat_percentage, :purpose, :activity_level)
+      :body_mass, :body_fat_percentage, :purpose, :activity_level, :tall, :age, :sex)
   end
 
   def require_admin

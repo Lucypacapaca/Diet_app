@@ -19,6 +19,7 @@ table.table.table-hover
       th
 
   tbody 
+    - asset_path('start_time.json')
     - @cooks.each do |cook|
       tr 
         td= link_to cook.name, cook 

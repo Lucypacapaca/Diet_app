@@ -45,6 +45,7 @@ ja:
         updated_at: 更新日時
         tall: 身長
         age: 年齢
+        sex: 性別
       
   date:
     abbr_day_names:
