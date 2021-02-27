@@ -13,25 +13,24 @@ html
 
       ul.navbar-nav.mr-auto
          - if current_user
-           /li.nav-item = form_with model: cook, local: true do |f|
-             .form-group 
-               li.nav-item = f.date_select :start_time, class: 'form-control', id: 'cook_start_time'
-               li.nav-item = f.submit nil, class: 'btn btn-primary'
-           /input type= "date" value= :select_day
            form action="cooks" method="get" 
             p
-              input name="select_day" type="date" 
+              - asset_path('start_time.json')
+              input name="start_time" type="date" value="2020-02-27" 
               input type="submit" value="更新" 
 
+      /ul.navbar-nav.mr-auto.ml-auto
+         - if current_user
+           = day.start_time
 
       ul.navbar-nav.ml-auto
          - if current_user
            li.nav-item = link_to '食事', cooks_path, class: 'nav-link'
-           - if current_user.admin?
-             li.nav-item = link_to 'ユーザー情報', admin_user_path(current_user), class: 'nav-link'
+           li.nav-item = link_to 'ユーザー情報', admin_user_path(current_user), class: 'nav-link'
            li.nav-item = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
          - else
            li.nav-item = link_to 'ログイン', login_path, class: 'nav-link'
+
     .container
       - if flash.notice.present?
         .alert.alert-success = flash.notice

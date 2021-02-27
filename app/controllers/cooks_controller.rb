@@ -3,7 +3,10 @@ class CooksController < ApplicationController
   before_action :set_cook, only: [:show, :edit, :update, :destroy]
 
   def index
-      @cooks = current_user.cooks.order(start_time: :desc) #.select(:select_day)
+    #unless params[:start_time].blank?
+      day = params[:start_time].to_s
+      @cooks = current_user.cooks.order(start_time: :desc).where(:day == :start_time)
+    #end
   end
 
   def show
