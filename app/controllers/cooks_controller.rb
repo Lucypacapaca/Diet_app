@@ -3,12 +3,18 @@ class CooksController < ApplicationController
   before_action :set_cook, only: [:show, :edit, :update, :destroy]
 
   def index
-    
-    #unless params[:start_time].blank?
+    @cooks = current_user.cooks.order(start_time: :desc)#.where(start_time.to_date ?  params[:date])
+
+    #logger.debug(@cooks.start_time.to_date)
+
+    unless params[:date].blank?
+      logger.debug(params[:date][:year])
+    end
+
+
+    unless params[:start_time].blank?
       day = params[:start_time].to_i
-      #@cooks = current_user.cooks.order(start_time: :desc).where("start_time >= ? AND start_time < ?", day, day + 1)
-      @cooks = current_user.cooks.order(start_time: :desc)#.between?(Date.yesterday, Date.tomorrow)
-    #end
+    end
   end
 
   def show

@@ -6,9 +6,12 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
   end
- 
+  
+  get '/cooks/search' , to:'cooks#index'
   root to:'cooks#index'
   resources :cooks 
+
+ 
 
   #get '/?start_date', to: 'cooks#cooklist'
   #get "cooks/list" => "cooks#list"
