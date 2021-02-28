@@ -11,24 +11,13 @@ html
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
       .navbar-brand ダイエットアプリ
 
-      ul.navbar-nav.mr-auto
-         - if current_user
-           form action="cooks" method="post" 
-            p
-              - asset_path('start_time.json')
-              input name="start_time" type="date" value="2020-02-27" 
-              input type="submit" value="更新" 
-
-      /ul.navbar-nav.mr-auto.ml-auto
-         - if current_user
-           = day.start_time
-
       ul.navbar-nav.ml-auto
          - if current_user
            li.nav-item = link_to '食事', cooks_path, class: 'nav-link'
            li.nav-item = link_to 'ユーザー情報', admin_user_path(current_user), class: 'nav-link'
            li.nav-item = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
          - else
+           li.nav-item = link_to '会員登録', new_admin_user_path, class: 'nav-link'
            li.nav-item = link_to 'ログイン', login_path, class: 'nav-link'
 
     .container

@@ -16,6 +16,7 @@ class Cook < ApplicationRecord
 
     scope :recent, -> { order(start_time: :desc) }
 
+
     private
     
     def set_nameless_name

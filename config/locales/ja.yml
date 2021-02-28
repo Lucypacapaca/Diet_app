@@ -1,13 +1,6 @@
 ---
 ja:
   activerecord:
-    #attributes:
-      #user:
-        #name: 名前
-        #email: メールアドレス
-        #password: パスワード
-        #activated: アクティブフラグ
-        #admin: 管理者フラグ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -20,10 +13,10 @@ ja:
       cook:
         id: ID
         name: 食品名
-        protein: タンパク質
+        protein: タンパク質(g)
         description: 時間帯
-        fat: 脂質
-        carbon_hydrate: 炭水化物
+        fat: 脂質(g)
+        carbon_hydrate: 炭水化物(g)
         memo: メモ 
         amount: グラム
         created_at: 作成日時
@@ -46,10 +39,10 @@ ja:
         tall: 身長
         age: 年齢
         sex: 性別
-        protein: タンパク質
-        fat: 脂質
-        carbon_hydrate: 炭水化物
-      
+        protein: タンパク質(g)
+        fat: 脂質(g)
+        carbon_hydrate: 炭水化物(g)
+
   date:
     abbr_day_names:
     - 日

@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
-  #before _action :require_admin
+  before_action :login_required, only: [:index, :edit, :update, :destroy]
+
   
   def index
     @users = User.all

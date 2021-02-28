@@ -8,11 +8,9 @@ Rails.application.routes.draw do
   end
  
   root to:'cooks#index'
-  resources :cooks do
-    collection do
-      get 'cooklist'
-      end
-  end
+  resources :cooks 
+
+  #get '/?start_date', to: 'cooks#cooklist'
   #get "cooks/list" => "cooks#list"
 
  

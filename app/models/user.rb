@@ -5,10 +5,10 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: true
 
     with_options numericality: true do
-        validates :body_mass, presence: true
+        validates :body_mass
         validates :body_fat_percentage
-        validates :tall, presence: true
-        validates :age, presence: true
+        validates :tall
+        validates :age
     end
 
     has_many :cooks
