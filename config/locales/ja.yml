@@ -46,6 +46,9 @@ ja:
         tall: 身長
         age: 年齢
         sex: 性別
+        protein: タンパク質
+        fat: 脂質
+        carbon_hydrate: 炭水化物
       
   date:
     abbr_day_names:

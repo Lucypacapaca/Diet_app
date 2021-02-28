@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_02_27_135502) do
     t.boolean "admin", default: false, null: false
     t.float "tall"
     t.integer "age"
-    t.string "sex"
+    t.integer "sex"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

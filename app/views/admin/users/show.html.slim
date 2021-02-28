@@ -31,31 +31,48 @@ table.table.table-hover
       td= @user.age
     tr 
       th= User.human_attribute_name(:sex)
-      td= @user.sex
+
+      - if @user.sex == 1
+          td= '男性' 
+      - elsif @user.sex == 2
+          td= '女性'
+      - else 
+          td= 'その他'
     tr 
       th= User.human_attribute_name(:purpose)
-      td= @user.purpose
+      - if @user.purpose == "1"
+          td= '増量' 
+      - elsif @user.purpose == "2"
+          td= '維持'
+      - else 
+          td= '減量'
     tr 
       th= User.human_attribute_name(:activity_level)
-      td= @user.activity_level
+      - if @user.activity_level == "1"
+          td= '高' 
+      - elsif @user.activity_level == "2"
+          td= '中'
+      - else 
+          td= '低'
 
-
+.content
+  h2 目標値
 .mb-10
 table.table.table-hover
   thead.thead-default
     tr 
-      th= User.human_attribute_name(:require_protein)
-      th= User.human_attribute_name(:require_fat)
-      th= User.human_attribute_name(:require_carbon_hydrate)
-      th= User.human_attribute_name(:require_kcal)
+      th= User.human_attribute_name(:protein)
+      th= User.human_attribute_name(:fat)
+      th= User.human_attribute_name(:carbon_hydrate)
+      th= User.human_attribute_name(:kcal)
       th
 
   tbody 
     tr 
-      td= @user.require_protein
-      td= @user.require_fat
-      td= @user.require_carbon_hydrate
-      td= @user.require_kcal
+      td= @user.require_protein.to_i
+      td= @user.require_fat.to_i
+      td= @user.require_carbon_hydrate.to_i
+      td= @user.require_kcal.to_i
 
     /- asset_path('start_time.json')
     /- @users.each do |user|
