@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_27_135502) do
+ActiveRecord::Schema.define(version: 2021_03_01_162429) do
 
   create_table "cooks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_02_27_135502) do
     t.text "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "start_time"
+    t.date "start_time"
     t.bigint "user_id", null: false
     t.datetime "select_day"
     t.index ["user_id"], name: "index_cooks_on_user_id"

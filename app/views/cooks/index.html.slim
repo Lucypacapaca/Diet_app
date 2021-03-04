@@ -26,18 +26,18 @@ table.table.table-hover
   tbody 
     
     - @cooks.each do |cook|
-      -if cook.start_time.to_date.strftime("%Y") == params[:date][:year] && cook.start_time.to_date.strftime("%-m") == params[:date][:month] && cook.start_time.to_date.strftime("%-d") == params[:date][:day]
-        tr 
-          td= link_to cook.name, cook 
-          td= cook.protein 
-          td= cook.fat 
-          td= cook.carbon_hydrate 
-          td= cook.amount
-          td= cook.kcal
-          td= cook.start_time.to_date
-          td
-            = link_to '編集', edit_cook_path(cook), class: 'btn btn-primary mr-3'
-            = link_to '削除', cook, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'
+        
+          tr 
+            td= link_to cook.name, cook 
+            td= cook.protein 
+            td= cook.fat 
+            td= cook.carbon_hydrate 
+            td= cook.amount
+            td= cook.kcal
+            td= cook.start_time
+            td
+              = link_to '編集', edit_cook_path(cook), class: 'btn btn-primary mr-3'
+              = link_to '削除', cook, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'
       
 
 
