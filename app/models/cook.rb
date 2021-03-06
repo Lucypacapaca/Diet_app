@@ -1,5 +1,6 @@
 class Cook < ApplicationRecord
     before_validation :set_nameless_name
+    validates :start_time, presence: true
 
     with_options numericality: true do
         validates :protein

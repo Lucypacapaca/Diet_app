@@ -3,11 +3,16 @@ class CooksController < ApplicationController
   before_action :set_cook, only: [:show, :edit, :update, :destroy]
 
   def index
-    #params[:cook][:start_time] = cook_join
+    #start_time_string = params[:date][:year] + "-" + params[:date][:month] + "-" + params[:date][:day]
+    #start_time_string = params[:date][:day]
+    #array_start_time = [params[:date][:year], params[:date][:month], params[:date][:day]].join('-')
+    #array_start_time = [start_time_y ,'-', start_time_m ,'-',start_time_d].join
     #array_start_time = [Cook.start_time("%Y"), Cook.start_time("%-m"), Cook.start_time("%-d")]
     #@cooks = current_user.cooks.order(start_time: :desc).where("array_start_time = ?", params[:date])
-    @cooks = current_user.cooks.order(start_time: :desc).find_by_sql("SELECT * FROM cooks WHERE updated_at = start_time ")
+    #@cooks = current_user.cooks.order(start_time: :desc).find_by_sql("SELECT * FROM cooks WHERE updated_at = start_time ")
+    @cooks = current_user.cooks.order(start_time: :desc)#.where("updated_at = ?", params[:date])
     #logger.debug(@cooks.start_time.to_date)
+    #logger.info(start_time_string)
 
     unless params[:date].blank?
       logger.debug(params[:date][:year])
@@ -19,9 +24,10 @@ class CooksController < ApplicationController
 
 
 
-    unless params[:start_time].blank?
+    unless :start_time.blank?
       #day = params[:start_time].to_i
-      logger.debug(prams[:start_time])
+      logger.info "ラーメン"
+      #logger.info()
     end
   end
 
@@ -56,10 +62,10 @@ class CooksController < ApplicationController
     end
   end
 
-  def search
+  #def search
     #@q = cooks.ransack[params[:q]]
     #@cooks = @q.result(distinct: true).recent
-  end
+  #end
 
   #def cooklist
     #@cooklist = current_user.cooks.order(start_time: :desc)

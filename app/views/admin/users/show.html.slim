@@ -63,22 +63,13 @@ table.table.table-hover
       th= User.human_attribute_name(:carbon_hydrate)
       th= User.human_attribute_name(:kcal)
       th
-
-  tbody 
-    tr 
-      td= @user.require_protein.to_i
-      td= @user.require_fat.to_i
-      td= @user.require_carbon_hydrate.to_i
-      td= @user.require_kcal.to_i
-
-    /- asset_path('start_time.json')
-    /- @users.each do |user|
+      
+    tbody 
       tr 
-        td= cook.require_protein 
-        td= cook.require_fat 
-        td= cook.require_carbon_hydrate 
-        td= cook.require_kcal
-        td
+        td= @user.require_protein.to_i
+        td= @user.require_fat.to_i
+        td= @user.require_carbon_hydrate.to_i
+        td= @user.require_kcal.to_i
 
 
 = link_to '編集', edit_admin_user_path, class: 'btn btn-primary mr-3'

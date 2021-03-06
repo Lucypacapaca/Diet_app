@@ -22,9 +22,8 @@
   .form-group 
     = f.label :start_time
     = f.date_select :start_time, class: 'form-control', id: 'cook_start_time'
+    /= f.date_select :start_time, use_two_digit_numbers: true, class: 'form-control', id: 'cook_start_time'
+    =logger.debug("かつおぶし")
+    /=logger.debug(cook[start_time])
   = f.submit nil, class: 'btn btn-primary'
-
-  / =form_tag("/cooks/search", method: "get") do |f|
-  / =label_tag(:start_time, "")
-  / =select_date
-  / =submit_tag("検索")
+  /=logger.debug([cook.start_time])
