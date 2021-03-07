@@ -22,7 +22,5 @@ class Cook < ApplicationRecord
     
     def set_nameless_name
         self.name = '食べ物' if name.blank? 
-    end
-
-    
+    end    
 end

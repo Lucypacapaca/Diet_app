@@ -52,25 +52,26 @@ table.table.table-hover
       - else 
           td= '低'
 
-.content
-  h2 目標値
-.mb-10
-table.table.table-hover
-  thead.thead-default
-    tr 
-      th= User.human_attribute_name(:protein)
-      th= User.human_attribute_name(:fat)
-      th= User.human_attribute_name(:carbon_hydrate)
-      th= User.human_attribute_name(:kcal)
-      th
-      
-    tbody 
+- unless  @user.tall.blank? || @user.age.blank? || @user.body_mass.blank? || @user.sex.blank? || @user.activity_level.blank? || @user.purpose.blank?
+  .content
+    h2 目標値
+  .mb-10
+  table.table.table-hover
+    thead.thead-default
       tr 
-        td= @user.require_protein.to_i
-        td= @user.require_fat.to_i
-        td= @user.require_carbon_hydrate.to_i
-        td= @user.require_kcal.to_i
-
+        th= User.human_attribute_name(:protein)
+        th= User.human_attribute_name(:fat)
+        th= User.human_attribute_name(:carbon_hydrate)
+        th= User.human_attribute_name(:kcal)
+        th
+        
+      tbody 
+        
+          tr 
+            td= require_protein.to_i
+            td= require_fat.to_i
+            td= require_carbon_hydrate.to_i
+            td= require_kcal.to_i
 
 = link_to '編集', edit_admin_user_path, class: 'btn btn-primary mr-3'
 = link_to '削除', [:admin, @user], method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-danger'

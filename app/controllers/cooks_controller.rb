@@ -21,9 +21,6 @@ class CooksController < ApplicationController
       #logger.debug(params[:date])
     end
 
-
-
-
     unless :start_time.blank?
       #day = params[:start_time].to_i
       logger.info "ラーメン"
@@ -44,19 +41,19 @@ class CooksController < ApplicationController
   
   def update
     @cook.update!(cook_params)
-    redirect_to cooks_url
+    redirect_to cooks_url, notice: "食品「#{@cook.name}」を編集しました"
   end
 
   def destroy
     @cook.destroy
-    redirect_to cooks_url
+    redirect_to cooks_url, notice: "食品「#{@cook.name}」を削除しました"
   end
 
   def create
     @cook = current_user.cooks.new(cook_params)
 
     if @cook.save
-      redirect_to cooks_url
+      redirect_to new_cook_url, notice: "食品「#{@cook.name}」を登録しました"
     else
       render :new
     end
@@ -85,17 +82,4 @@ class CooksController < ApplicationController
   def set_cook
     @cook = current_user.cooks.find(params[:id])
   end
-
-  # def cook_join
-  #   cookday = params[:cook][:start_time]
-
-  #   if cookday["start_time(1i)"].empty? && cookday["start_time(2i)"].empty? &&cookday["start_time(3i)"].empty? 
-  #     return
-  #   end
-
-  #   Date.new cookday["start_time(i1)"].to_i, cookday["start_time(i2)"].to_i, cookday["start_time(i3)"].to_i
-
-  # end
-
-
 end
