@@ -1,7 +1,7 @@
 =form_tag("/cooks/search", method: "get") do |f|
   =label_tag(:start_time, "")
   =select_date
-  =submit_tag("検索")
+  =submit_tag("表示")
 
 h1 食事
 
@@ -24,20 +24,20 @@ table.table.table-hover
       th
 
   tbody 
-    
-    - @cooks.each do |cook|
-        
-          tr 
-            td= link_to cook.name, cook 
-            td= cook.protein 
-            td= cook.fat 
-            td= cook.carbon_hydrate 
-            td= cook.amount
-            td= cook.kcal
-            td= cook.start_time
-            td
-              = link_to '編集', edit_cook_path(cook), class: 'btn btn-primary mr-3'
-              = link_to '削除', cook, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'    
+   -unless @cooks.blank? 
+      - @cooks.each do |cook|
+          
+            tr 
+              td= link_to cook.name, cook 
+              td= cook.protein 
+              td= cook.fat 
+              td= cook.carbon_hydrate 
+              td= cook.amount
+              td= cook.kcal
+              td= cook.start_time
+              td
+                = link_to '編集', edit_cook_path(cook), class: 'btn btn-primary mr-3'
+                = link_to '削除', cook, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'    
 
 
       

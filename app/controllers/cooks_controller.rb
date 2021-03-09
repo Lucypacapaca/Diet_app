@@ -12,14 +12,14 @@ class CooksController < ApplicationController
         start_time_day = "0" + params[:date][:day]
       end
 
-      start_time_string = params[:date][:year] + "-" + start_time_month + "-" + start_time_day
+      start_time_string_date = (params[:date][:year] + "-" + start_time_month + "-" + start_time_day).to_date
+      @cooks = current_user.cooks.order(start_time: :desc).where(start_time: start_time_string_date)
+      
     end
-    
-    #@cooks = current_user.cooks.order(start_time: :desc).where("array_start_time = ?", params[:date])
-    #@cooks = current_user.cooks.order(start_time: :desc).find_by_sql("SELECT * FROM cooks WHERE updated_at = start_time ")
-    @cooks = current_user.cooks.order(start_time: :desc)#.where("updated_at = ?", params[:date])
-    #logger.debug(@cooks.start_time.to_date)
-    logger.info(start_time_string)
+
+    logger.info(start_time_string_date)
+
+  
 
     unless params[:date].blank?
       logger.debug(params[:date][:year])
@@ -71,9 +71,6 @@ class CooksController < ApplicationController
     #@cooks = @q.result(distinct: true).recent
   #end
 
-  #def cooklist
-    #@cooklist = current_user.cooks.order(start_time: :desc)
-  #end
 
   private
 
