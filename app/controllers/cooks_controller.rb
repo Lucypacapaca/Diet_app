@@ -3,16 +3,23 @@ class CooksController < ApplicationController
   before_action :set_cook, only: [:show, :edit, :update, :destroy]
 
   def index
-    #start_time_string = params[:date][:year] + "-" + params[:date][:month] + "-" + params[:date][:day]
-    #start_time_string = params[:date][:day]
-    #array_start_time = [params[:date][:year], params[:date][:month], params[:date][:day]].join('-')
-    #array_start_time = [start_time_y ,'-', start_time_m ,'-',start_time_d].join
-    #array_start_time = [Cook.start_time("%Y"), Cook.start_time("%-m"), Cook.start_time("%-d")]
+    unless params[:date].blank?
+      if params[:date][:month].to_i < 10
+        start_time_month = "0" + params[:date][:month]
+      end
+
+      if params[:date][:day].to_i < 10
+        start_time_day = "0" + params[:date][:day]
+      end
+
+      start_time_string = params[:date][:year] + "-" + start_time_month + "-" + start_time_day
+    end
+    
     #@cooks = current_user.cooks.order(start_time: :desc).where("array_start_time = ?", params[:date])
     #@cooks = current_user.cooks.order(start_time: :desc).find_by_sql("SELECT * FROM cooks WHERE updated_at = start_time ")
     @cooks = current_user.cooks.order(start_time: :desc)#.where("updated_at = ?", params[:date])
     #logger.debug(@cooks.start_time.to_date)
-    #logger.info(start_time_string)
+    logger.info(start_time_string)
 
     unless params[:date].blank?
       logger.debug(params[:date][:year])
