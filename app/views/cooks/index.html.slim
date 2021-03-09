@@ -24,7 +24,7 @@ table.table.table-hover
       th
 
   tbody 
-   -unless @cooks.blank? 
+    -unless @cooks.blank? 
       - @cooks.each do |cook|
           
             tr 
@@ -38,6 +38,23 @@ table.table.table-hover
               td
                 = link_to '編集', edit_cook_path(cook), class: 'btn btn-primary mr-3'
                 = link_to '削除', cook, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'    
+      
+      .mb-3 
+      table.table.table-hover
+        h2 合計
+        thead.thead-default
+          tr 
+            th= Cook.human_attribute_name(:protein)
+            th= Cook.human_attribute_name(:fat)
+            th= Cook.human_attribute_name(:carbon_hydrate)
+            th= Cook.human_attribute_name(:kcal)
+            tr 
+              td= @cooks.sum(:protein) 
+              td= @cooks.sum(:fat) 
+              td= @cooks.sum(:carbon_hydrate)  
+              td= @cooks.sum(:protein)*4 + @cooks.sum(:fat)*9 + @cooks.sum(:carbon_hydrate)*4 
+              td
+        
 
 
       
