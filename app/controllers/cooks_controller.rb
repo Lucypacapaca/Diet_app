@@ -6,17 +6,24 @@ class CooksController < ApplicationController
     unless params[:date].blank?
       if params[:date][:month].to_i < 10
         start_time_month = "0" + params[:date][:month]
+      else
+        start_time_month = params[:date][:month]
       end
 
       if params[:date][:day].to_i < 10
         start_time_day = "0" + params[:date][:day]
+      else
+        start_time_day = params[:date][:day]
       end
 
-      start_time_string_date = (params[:date][:year] + "-" + start_time_month + "-" + start_time_day).to_date
-      @cooks = current_user.cooks.order(start_time: :desc).where(start_time: start_time_string_date)
+      unless params[:date][:year].blank? && start_time_month.blank? && start_time_day .blank?
+
+        start_time_string_date = (params[:date][:year] + "-" + start_time_month + "-" + start_time_day).to_date
+      #@cooks = current_user.cooks.order(start_time: :desc).where(start_time: start_time_string_date)
+      end
       
     end
-
+    @cooks = current_user.cooks.order(start_time: :desc).where(start_time: start_time_string_date)
     logger.info(start_time_string_date)
 
   
