@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :cooks do
+    resources :foods
+  end
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -10,13 +14,5 @@ Rails.application.routes.draw do
   get '/cooks/search' , to:'cooks#index'
   root to:'cooks#index'
   resources :cooks 
-
- 
-
-  #get '/?start_date', to: 'cooks#cooklist'
-  #get "cooks/list" => "cooks#list"
-
- 
- 
 
 end

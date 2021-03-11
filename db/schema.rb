@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_124016) do
+ActiveRecord::Schema.define(version: 2021_03_10_004136) do
 
   create_table "cooks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_124016) do
     t.float "carbon_hydrate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "amount"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

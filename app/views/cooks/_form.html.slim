@@ -21,9 +21,5 @@
     = f.text_field :amount, class: 'form-control', id: 'cook_amount'
   .form-group 
     = f.label :start_time
-    /= f.date_select :start_time, class: 'form-control', id: 'cook_start_time'
-    = f.date_select :start_time, use_one_digit_numbers: true, class: 'form-control', id: 'cook_start_time'
-    =logger.debug("かつおぶし")
-    /=logger.debug(cook[start_time])
+    = f.date_select :start_time, class: 'form-control', id: 'cook_start_time'
   = f.submit nil, class: 'btn btn-primary'
-  /=logger.debug([cook.start_time])
