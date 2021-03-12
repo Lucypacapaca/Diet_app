@@ -1,2 +1,52 @@
-h1 Cooks::Foods#index
-p Find me in app/views/cooks/foods/index.html.slim
+h1 レシピ検索
+
+= search_form_for @q, url: cooks_foods_path, class: 'mb-5' do |f|
+  .form-group.row 
+    = f.label :name_cont, '素材名', class: 'col-sm-2 col-form-label'
+    .col-sm-10 
+      = f.search_field :name_cont, class: 'form-control'
+  .form-group 
+    = f.submit class: 'btn btn-outline-primary'
+
+.mb-3 
+table.table.table-hover
+  thead.thead-default
+    tr 
+      th= Food.human_attribute_name(:name)
+      th= Food.human_attribute_name(:protein)
+      th= Food.human_attribute_name(:fat)
+      th= Food.human_attribute_name(:carbon_hydrate)
+      th= Food.human_attribute_name(:amount)
+      th= Food.human_attribute_name(:kcal)
+      th
+
+  tbody 
+    -unless @foods.blank? 
+      - @foods.each do |food|
+          
+            tr 
+              td= link_to food.name, food 
+              td= food.protein 
+              td= food.fat 
+              td= food.carbon_hydrate 
+              td= food.amount
+              td= food.kcal
+              td
+                = link_to '編集', edit_food_path(food), class: 'btn btn-primary mr-3'
+                = link_to '削除', food, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'    
+      
+      .mb-3 
+      table.table.table-hover
+        h2 合計
+        thead.thead-default
+          tr 
+            th= Food.human_attribute_name(:protein)
+            th= Food.human_attribute_name(:fat)
+            th= Food.human_attribute_name(:carbon_hydrate)
+            th= Food.human_attribute_name(:kcal)
+            tr 
+              td= @foods.sum(:protein) 
+              td= @foods.sum(:fat) 
+              td= @foods.sum(:carbon_hydrate)  
+              td= @foods.sum(:protein)*4 + @foods.sum(:fat)*9 + @foods.sum(:carbon_hydrate)*4 
+              td

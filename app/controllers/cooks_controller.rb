@@ -26,8 +26,6 @@ class CooksController < ApplicationController
     @cooks = current_user.cooks.order(start_time: :desc).where(start_time: start_time_string_date)
     logger.info(start_time_string_date)
 
-  
-
     unless params[:date].blank?
       logger.debug(params[:date][:year])
       logger.debug(params[:date][:month])

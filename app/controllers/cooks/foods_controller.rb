@@ -1,8 +1,7 @@
 class Cooks::FoodsController < ApplicationController
   def new
     @food = Food.new
-    @q = current_user.foods.ransack(params[:q])
-    @foods = @q.result(distinct: true).recent
+   
   end
 
   def create
@@ -16,12 +15,22 @@ class Cooks::FoodsController < ApplicationController
   end
 
   def index
-    
+    @q = Food.ransack(params[:q])
+    @foods = @q.result(distinct: true)
   end
+
+  # def search
+  #   @q = Food.search(search_params)
+  #   @foods = @q.result(distinct: true)
+  # end
 
   private
 
   def food_params
     params.require(:food).permit(:name, :protein, :fat, :carbon_hydrate, :kcal, :amount)
   end
+
+  # def search_params
+  #   params.require(:q).permit!
+  # end
 end
