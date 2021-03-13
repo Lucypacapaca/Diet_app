@@ -5,16 +5,16 @@ namespace :import do
   desc "Import food data from csv"
 
   task foods: :environment do
-    path = File.join Rails.root, "db/csv/eiyo.csv"
+    path = File.join Rails.root, "eiyo.csv"
     puts "path: #{path}"
     list = []
     CSV.foreach(path, headers: true) do |row|
       list << {
           name: row["name"],
-          kcal: row["kcal"],
           protein: row["protein"],
           fat: row["fat"],
-          carbon_hydrate: row["carbon_hydrate"]
+          carbon_hydrate: row["carbon_hydrate"],
+          kcal: row["kcal"]
 
       }
     end

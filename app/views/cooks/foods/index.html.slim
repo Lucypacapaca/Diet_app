@@ -10,6 +10,7 @@ h1 レシピ検索
 
 .mb-3 
 table.table.table-hover
+  h2 検索結果
   thead.thead-default
     tr 
       th= Food.human_attribute_name(:name)
@@ -21,19 +22,18 @@ table.table.table-hover
       th
 
   tbody 
-    -unless @foods.blank? 
+    -unless @q.blank? 
       - @foods.each do |food|
-          
             tr 
-              td= link_to food.name, food 
+              td= food.name 
               td= food.protein 
               td= food.fat 
               td= food.carbon_hydrate 
               td= food.amount
               td= food.kcal
               td
-                = link_to '編集', edit_food_path(food), class: 'btn btn-primary mr-3'
-                = link_to '削除', food, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'    
+                = link_to '編集', edit_cooks_food_path(food), class: 'btn btn-primary mr-3'
+                = link_to '削除', cooks_food_path(food), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'    
       
       .mb-3 
       table.table.table-hover
@@ -48,5 +48,5 @@ table.table.table-hover
               td= @foods.sum(:protein) 
               td= @foods.sum(:fat) 
               td= @foods.sum(:carbon_hydrate)  
-              td= @foods.sum(:protein)*4 + @foods.sum(:fat)*9 + @foods.sum(:carbon_hydrate)*4 
+              td= @foods.sum(:kcal)
               td
