@@ -24,6 +24,11 @@ class Cooks::FoodsController < ApplicationController
   #   @foods = @q.result(distinct: true)
   # end
 
+  def import
+    foods.import(params[:file])
+    render :new, notice: "レシピを追加しました"
+  end
+
   private
 
   def food_params

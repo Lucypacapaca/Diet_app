@@ -1,5 +1,5 @@
 class Food < ApplicationRecord
-    belongs_to :cooks, optional: true
+    belongs_to :cook, optional: true
 
     def self.csv_attributes
         ["name", "protein", "fat", "carbon_hydrate", "kcal"]
