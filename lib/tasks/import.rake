@@ -10,11 +10,11 @@ namespace :import do
     list = []
     CSV.foreach(path, headers: true) do |row|
       list << {
-          name: row["name"],
-          protein: row["protein"],
-          fat: row["fat"],
-          carbon_hydrate: row["carbon_hydrate"],
-          kcal: row["kcal"]
+          name: row["Name"],
+          protein: row["PROTEIN"],
+          fat: row["FAT"],
+          carbon_hydrate: row["CARBON HYDRATE"],
+          kcal: row["KCAL"]
 
       }
     end

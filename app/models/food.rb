@@ -1,5 +1,7 @@
 class Food < ApplicationRecord
-    belongs_to :cook, optional: true
+    has_many :cooks, through: :cook_foods
+    has_many :cook_foods
+    accepts_nested_attributes_for :cook_foods
 
     def self.csv_attributes
         ["name", "protein", "fat", "carbon_hydrate", "kcal"]

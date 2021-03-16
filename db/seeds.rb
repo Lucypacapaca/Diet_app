@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
   Food.create!(
-    cook_id: 1,
     name: "家二郎",
     protein: 20,
     fat:50,
@@ -16,7 +15,6 @@
   )
   
   Food.create!(
-    cook_id: 2,
     name: "きのこの山",
     protein: 6.3,
     fat:26.7,
@@ -26,7 +24,6 @@
   )
   
   Food.create!(
-    cook_id: 3,
     name: "たけのこの里",
     protein: 5.5,
     fat:22.8,

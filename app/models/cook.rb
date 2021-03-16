@@ -17,7 +17,8 @@ class Cook < ApplicationRecord
 
     scope :recent, -> { order(start_time: :desc) }
 
-    has_many :foods
+    has_many :foods, through: :cook_foods
+    has_many :cook_foods
 
 
     private
