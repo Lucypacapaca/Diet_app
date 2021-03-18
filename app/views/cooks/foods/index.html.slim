@@ -1,14 +1,17 @@
-h1 レシピ検索
+h1 食品検索
 
 = search_form_for @q, url: cooks_foods_path, class: 'mb-5' do |f|
   .form-group.row 
-    = f.label :name_cont, '素材名', class: 'col-sm-2 col-form-label'
+    = f.label :name_cont, '食品名', class: 'col-sm-2 col-form-label'
     .col-sm-10 
       = f.search_field :name_cont, class: 'form-control'
   .form-group 
     = f.submit class: 'btn btn-outline-primary'
 
 .mb-3 
+  = paginate @foods
+  = page_entries_info @foods
+
 table.table.table-hover
   h2 検索結果
   thead.thead-default
@@ -17,7 +20,6 @@ table.table.table-hover
       th= Food.human_attribute_name(:protein)
       th= Food.human_attribute_name(:fat)
       th= Food.human_attribute_name(:carbon_hydrate)
-      th= Food.human_attribute_name(:amount)
       th= Food.human_attribute_name(:kcal)
       th
 
@@ -29,24 +31,7 @@ table.table.table-hover
               td= food.protein 
               td= food.fat 
               td= food.carbon_hydrate 
-              td= food.amount
               td= food.kcal
               td
                 = link_to '編集', edit_cooks_food_path(food), class: 'btn btn-primary mr-3'
                 = link_to '削除', cooks_food_path(food), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'    
-      
-      .mb-3 
-      table.table.table-hover
-        h2 合計
-        thead.thead-default
-          tr 
-            th= Food.human_attribute_name(:protein)
-            th= Food.human_attribute_name(:fat)
-            th= Food.human_attribute_name(:carbon_hydrate)
-            th= Food.human_attribute_name(:kcal)
-            tr 
-              td= @foods.sum(:protein) 
-              td= @foods.sum(:fat) 
-              td= @foods.sum(:carbon_hydrate)  
-              td= @foods.sum(:kcal)
-              td

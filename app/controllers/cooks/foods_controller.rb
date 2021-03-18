@@ -16,7 +16,7 @@ class Cooks::FoodsController < ApplicationController
 
   def index
     @q = Food.ransack(params[:q])
-    @foods = @q.result(distinct: true)
+    @foods = @q.result(distinct: true).page(params[:page])
   end
 
   # def search

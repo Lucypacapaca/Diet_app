@@ -1,1 +1,28 @@
-h1 レシピ検索ではない
+h1 食材の登録
+
+- if food.errors.present?
+  ul#error_explanation 
+    - food.errors.full_messages.each do |message|
+      li= message
+
+= form_with model: food, local: true do |f| 
+  .form-group 
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'food_name'
+  .form-group 
+    = f.label :protein
+    = f.text_field :protein, class: 'form-control', id: 'food_protein'
+  .form-group 
+    = f.label :fat
+    = f.text_field :fat, class: 'form-control', id: 'food_fat'
+  .form-group 
+    = f.label :carbon_hydrate
+    = f.text_field :carbon_hydrate, class: 'form-control', id: 'food_carbon_hydrate'
+  .form-group 
+    = f.label :amount
+    = f.text_field :amount, class: 'form-control', id: 'food_amount'
+  .form-group 
+    = f.label :start_time
+    = f.date_select :start_time, class: 'form-control', id: 'food_start_time'
+  = f.submit nil, class: 'btn btn-primary'
+

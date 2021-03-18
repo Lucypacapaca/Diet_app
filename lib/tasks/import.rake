@@ -1,10 +1,12 @@
 require 'csv'
 
+
 # rake import:foods
 namespace :import do
   desc "Import food data from csv"
 
   task foods: :environment do
+    #Food.delete_all
     path = File.join Rails.root, "eiyo.csv"
     puts "path: #{path}"
     list = []
