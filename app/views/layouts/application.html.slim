@@ -13,7 +13,9 @@ html
 
       ul.navbar-nav.ml-auto
          - if current_user
-           li.nav-item = link_to '食事', cooks_path, class: 'nav-link'
+           li.nav-item = link_to '食材追加', cooks_foods_path, class: 'nav-link'
+           li.nav-item = link_to 'レシピ登録', cooks_recipes_path, class: 'nav-link'
+           li.nav-item = link_to '食事登録', cooks_path, class: 'nav-link'
            li.nav-item = link_to 'ユーザー情報', admin_user_path(current_user), class: 'nav-link'
            li.nav-item = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
          - else

@@ -51,6 +51,15 @@ ja:
         amount: グラム
         foods: 食材
         entry_name: 食材
+      recipe:
+        id: ID
+        name: レシピ名
+        protein: タンパク質(g)
+        fat: 脂質(g)
+        carbon_hydrate: 炭水化物(g)
+        amount: グラム
+        foods: 食材
+        entry_name: 食材
 
   date:
     abbr_day_names:

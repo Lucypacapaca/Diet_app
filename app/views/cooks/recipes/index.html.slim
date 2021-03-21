@@ -1,8 +1,14 @@
-h1 食品検索
+h1 レシピ登録
 
-= search_form_for @q, url: cooks_foods_path, class: 'mb-5' do |f|
+= form_with model: @recipe, local: true do |f| 
+  .form-group 
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'recipe_name'
+
+h2 食材検索
+= search_form_for @q, url: cooks_recipes_path, class: 'mb-5' do |f|
   .form-group.row 
-    = f.label :name_cont, '食品名', class: 'col-sm-2 col-form-label'
+    = f.label :name_cont, ',食材名', class: 'col-sm-2 col-form-label'
     .col-sm-10 
       = f.search_field :name_cont, class: 'form-control', required: true
   .form-group 
@@ -11,7 +17,6 @@ h1 食品検索
 .mb-3 
   = paginate @foods
   = page_entries_info @foods
-
 table.table.table-hover
   h2 検索結果
   thead.thead-default
@@ -24,7 +29,7 @@ table.table.table-hover
       th
 
   tbody 
-    -unless @q.blank? 
+    -unless @recipe.blank? 
       - @foods.each do |food|
             tr 
               td= food.name 

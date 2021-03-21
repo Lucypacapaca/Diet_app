@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :cooks do
     resources :foods
+    resources :recipes
   end
 
   get '/login', to: 'sessions#new'
