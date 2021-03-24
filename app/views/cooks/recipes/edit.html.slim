@@ -1,2 +1,22 @@
-h1 Cooks::Recipes#edit
-p Find me in app/views/cooks/recipes/edit.html.slim
+h1 レシピ編集
+
+= form_with model: @recipe, url: cooks_recipes_path, local: true do |f| 
+  .form-group 
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'recipe_name'
+  .form-group 
+    = f.label :protein
+    = f.text_field :protein, class: 'form-control', id: 'recipe_protein'
+  .form-group 
+    = f.label :fat
+    = f.text_field :fat, class: 'form-control', id: 'recipe_fat'
+  .form-group 
+    = f.label :carbon_hydrate
+    = f.text_field :carbon_hydrate, class: 'form-control', id: 'recipe_carbon_hydrate'
+  .form-group 
+    = f.label :kcal
+    = f.text_field :kcal, class: 'form-control', id: 'recipe_kcal'
+  .form-group 
+    = f.label :amount
+    = f.text_field :amount, class: 'form-control', id: 'recipe_amount'
+  = f.submit nil, class: 'btn btn-primary'

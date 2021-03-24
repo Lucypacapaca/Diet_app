@@ -10,7 +10,7 @@ class Recipe < ApplicationRecord
         validates :amount
     end
 
-    def kcal
-        @kcal = (4*protein + 9*fat + 4*carbon_hydrate).to_i
-    end
+    # def kcal
+    #     @kcal = 4*protein + 9*fat + 4*carbon_hydrate
+    # end
 end

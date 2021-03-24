@@ -44,7 +44,7 @@ ja:
         carbon_hydrate: 炭水化物(g)
       food:
         id: ID
-        name: 食品名
+        name: 食材名
         protein: タンパク質(g)
         fat: 脂質(g)
         carbon_hydrate: 炭水化物(g)
@@ -53,13 +53,13 @@ ja:
         entry_name: 食材
       recipe:
         id: ID
-        name: レシピ名
-        protein: タンパク質(g)
-        fat: 脂質(g)
-        carbon_hydrate: 炭水化物(g)
-        amount: グラム
-        foods: 食材
-        entry_name: 食材
+        Name: レシピ名
+        Protein: タンパク質(g)
+        Fat: 脂質(g)
+        Carbon_hydrate: 炭水化物(g)
+        Amount: グラム
+        Foods: 食材
+        Entry_name: 食材
 
   date:
     abbr_day_names:

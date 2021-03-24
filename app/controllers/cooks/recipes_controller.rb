@@ -4,6 +4,7 @@ class Cooks::RecipesController < ApplicationController
   end
 
   def show
+    @recipe = Recipe.find(params[:id])
   end
 
   def edit
@@ -20,7 +21,7 @@ class Cooks::RecipesController < ApplicationController
   end
 
   def create
-    @recipe = current_user.recipes.new(recipe_params)
+    @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
       redirect_to cooks_recipe_path(@recipe), notice: "レシピ「#{@recipe.name}」を登録しました"

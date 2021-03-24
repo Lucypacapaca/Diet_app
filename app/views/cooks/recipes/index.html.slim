@@ -22,22 +22,22 @@ table.table.table-hover
   h2 検索結果
   thead.thead-default
     tr 
-      th= Food.human_attribute_name(:name)
-      th= Food.human_attribute_name(:protein)
-      th= Food.human_attribute_name(:fat)
-      th= Food.human_attribute_name(:carbon_hydrate)
-      th= Food.human_attribute_name(:kcal)
+      th= Recipe.human_attribute_name(:name)
+      th= Recipe.human_attribute_name(:protein)
+      th= Recipe.human_attribute_name(:fat)
+      th= Recipe.human_attribute_name(:carbon_hydrate)
+      th= Recipe.human_attribute_name(:kcal)
       th
 
   tbody 
-    -unless @recipe.blank? 
-      - @foods.each do |food|
+    -unless @recipes.blank? 
+      - @recipes.each do |recipe|
             tr 
-              td= food.name 
-              td= food.protein 
-              td= food.fat 
-              td= food.carbon_hydrate 
-              td= food.kcal
+              td= recipe.name 
+              td= recipe.protein 
+              td= recipe.fat 
+              td= recipe.carbon_hydrate 
+              td= recipe.kcal
               td
-                = link_to '編集', edit_cooks_food_path(food), class: 'btn btn-primary mr-3'
-                = link_to '削除', cooks_food_path(food), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'    
+                = link_to '編集', edit_cooks_recipe_path(recipe), class: 'btn btn-primary mr-3'
+                = link_to '削除', cooks_recipes_path(recipe), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'    

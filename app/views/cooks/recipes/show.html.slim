@@ -20,9 +20,6 @@ table.table.table-hover
     tr 
       th= Recipe.human_attribute_name(:amount)
       td= @recipe.amount
-    tr 
-      th= Recipe.human_attribute_name(:start_time)
-      td= @recipe.start_time.to_date
     
 = link_to '編集', edit_cooks_recipe_path, class: 'btn btn-primary mr-3'
-= link_to '削除', @recipe, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'
+= link_to '削除', cooks_recipes_path, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'
