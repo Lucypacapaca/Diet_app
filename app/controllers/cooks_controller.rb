@@ -65,7 +65,7 @@ class CooksController < ApplicationController
     @cook = current_user.cooks.new(cook_params)
 
     if @cook.save
-      redirect_to new_cook_url, notice: "食品「#{@cook.name}」を登録しました"
+      redirect_to cooks_path, notice: "食品「#{@cook.name}」を登録しました"
     else
       render :new
     end

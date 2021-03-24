@@ -1,6 +1,7 @@
-h1 食品検索
+h1 食材一覧
+= link_to '食材追加', new_cooks_food_path,  class: 'btn btn-primary mr-3'
 
-= search_form_for @q, url: cooks_foods_path, class: 'mb-5' do |f|
+/= search_form_for @q, url: cooks_foods_path, class: 'mb-5' do |f|
   .form-group.row 
     = f.label :name_cont, '食品名', class: 'col-sm-2 col-form-label'
     .col-sm-10 
@@ -9,8 +10,8 @@ h1 食品検索
     = f.submit class: 'btn btn-outline-primary'
 
 .mb-3 
-  = paginate @foods
-  = page_entries_info @foods
+  /= paginate @foods
+  /= page_entries_info @foods
 
 table.table.table-hover
   h2 検索結果
@@ -24,7 +25,7 @@ table.table.table-hover
       th
 
   tbody 
-    -unless @q.blank? 
+    -unless @foods.blank? 
       - @foods.each do |food|
             tr 
               td= food.name 

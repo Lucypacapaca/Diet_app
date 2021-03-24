@@ -1,7 +1,6 @@
 class Cooks::FoodsController < ApplicationController
   def new
     @food = Food.new
-   
   end
 
   def create
@@ -15,8 +14,9 @@ class Cooks::FoodsController < ApplicationController
   end
 
   def index
-    @q = Food.ransack(params[:q])
-    @foods = @q.result(distinct: true).page(params[:page])
+    #@q = Food.ransack(params[:q])
+    #@foods = @q.result(distinct: true).page(params[:page])
+    @foods = Food.all
   end
 
   # def search
@@ -26,7 +26,7 @@ class Cooks::FoodsController < ApplicationController
 
   def import
     foods.import(params[:file])
-    render :new, notice: "レシピを追加しました"
+    render :new, notice: "食材を追加しました"
   end
 
   private

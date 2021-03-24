@@ -1,2 +1,28 @@
-h1 Cooks::Recipes#show
-p Find me in app/views/cooks/recipes/show.html.slim
+h1 レシピ詳細
+
+.nav.justify-content-end 
+  = link_to '戻る', cooks_recipes_path, class: 'nav-link'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th= Recipe.human_attribute_name(:name)
+      td= @recipe.name
+    tr 
+      th= Recipe.human_attribute_name(:protein)
+      td= @recipe.protein
+    tr 
+      th= Recipe.human_attribute_name(:fat)
+      td= @recipe.fat
+    tr 
+      th= Recipe.human_attribute_name(:carbon_hydrate)
+      td= @recipe.carbon_hydrate
+    tr 
+      th= Recipe.human_attribute_name(:amount)
+      td= @recipe.amount
+    tr 
+      th= Recipe.human_attribute_name(:start_time)
+      td= @recipe.start_time.to_date
+    
+= link_to '編集', edit_cooks_recipe_path, class: 'btn btn-primary mr-3'
+= link_to '削除', @recipe, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'

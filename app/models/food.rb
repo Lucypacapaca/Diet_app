@@ -1,7 +1,7 @@
 class Food < ApplicationRecord
-    has_many :cooks, through: :cook_foods
-    has_many :cook_foods
-    accepts_nested_attributes_for :cook_foods
+    has_many :recipes, through: :recipes_food
+    has_many :recipes_food
+    accepts_nested_attributes_for :recipes_food
     paginates_per 100
 
     def self.csv_attributes

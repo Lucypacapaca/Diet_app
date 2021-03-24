@@ -1,2 +1,28 @@
-h1 Cooks::Foods#show
-p Find me in app/views/cooks/foods/show.html.slim
+h1 食材詳細
+
+.nav.justify-content-end 
+  = link_to '戻る', cooks_foods_path, class: 'nav-link'
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th= Food.human_attribute_name(:name)
+      td= @food.name
+    tr 
+      th= Food.human_attribute_name(:protein)
+      td= @food.protein
+    tr 
+      th= Food.human_attribute_name(:fat)
+      td= @food.fat
+    tr 
+      th= Food.human_attribute_name(:carbon_hydrate)
+      td= @food.carbon_hydrate
+    tr 
+      th= Food.human_attribute_name(:amount)
+      td= @food.amount
+    tr 
+      th= Food.human_attribute_name(:start_time)
+      td= @food.start_time.to_date
+    
+= link_to '編集', edit_cooks_food_path, class: 'btn btn-primary mr-3'
+= link_to '削除', @food, method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'
