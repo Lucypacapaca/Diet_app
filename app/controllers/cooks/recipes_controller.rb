@@ -21,23 +21,28 @@ class Cooks::RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.recipes.new(recipe_params)
 
     if @recipe.save
-      redirect_to cooks_recipe_path(@recipe), notice: "レシピ「#{@recipe.name}」を登録しました"
+      redirect_to cooks_recipes_path, notice: "レシピ「#{@recipe.name}」を登録しました"
     else
       render :new
     end
   end
 
   def index
-    @recipe = Recipe.all
+    @recipes = Recipe.all
   end
   
   private
 
   def recipe_params
     params.require(:recipe).permit(:name, :protein, :fat, :carbon_hydrate, :kcal, :amount)
+  end
+
+  def set_recipe
+    @recipe = current_user.recipes.find(params[:id])
+
   end
 
 end

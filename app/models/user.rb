@@ -12,5 +12,6 @@ class User < ApplicationRecord
     end
 
     has_many :cooks
+    has_many :recipes
 
 end
