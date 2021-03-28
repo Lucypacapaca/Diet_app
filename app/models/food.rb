@@ -2,7 +2,7 @@ class Food < ApplicationRecord
     has_many :recipes, through: :recipes_food
     has_many :recipes_food
     accepts_nested_attributes_for :recipes_food
-    paginates_per 100
+    paginates_per 10
 
     def self.csv_attributes
         ["name", "protein", "fat", "carbon_hydrate", "kcal"]

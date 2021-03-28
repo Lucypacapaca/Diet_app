@@ -1,6 +1,8 @@
 class Cooks::RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
+    @q = Food.ransack(params[:q])
+    @foods = @q.result(distinct: true).page(params[:page])
   end
 
   def show
@@ -31,7 +33,8 @@ class Cooks::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all
+    @q = Recipe.ransack(params[:q])
+    @recipes = @q.result(distinct: true).page(params[:page])
   end
   
   private

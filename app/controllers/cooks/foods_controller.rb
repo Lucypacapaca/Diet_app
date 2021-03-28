@@ -4,10 +4,10 @@ class Cooks::FoodsController < ApplicationController
   end
 
   def create
-    @food = current_user.foods.new(food_params)
+    @food = Food.new(food_params)
 
     if @food.save
-      redirect_to cooks_foods_path, notice: "レシピ「#{@food.name}」を登録しました"
+      redirect_to cooks_foods_path, notice: "食材「#{@food.name}」を登録しました"
     else
       render :new
     end
@@ -17,9 +17,9 @@ class Cooks::FoodsController < ApplicationController
   end
 
   def index
-    #@q = Food.ransack(params[:q])
-    #@foods = @q.result(distinct: true).page(params[:page])
-    @foods = Food.all.page(params[:page])
+    @q = Food.ransack(params[:q])
+    @foods = @q.result(distinct: true).page(params[:page])
+    #@foods = Food.all.page(params[:page])
   end
 
   # def search

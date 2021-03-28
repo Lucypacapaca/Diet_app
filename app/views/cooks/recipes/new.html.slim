@@ -1,28 +1,59 @@
 h1 レシピ登録
 
-- if @recipe.errors.present?
+/- if @recipe.errors.present?
   ul#error_explanation 
-    - reipe.errors.full_messages.each do |message|
+    - recipe.errors.full_messages.each do |message|
       li= message
 
-= form_with model: @recipe, url: cooks_recipes_path, local: true do |f| 
+= search_form_for @q, url: cooks_recipes_path, class: 'mb-5' do |f|
+  .form-group.row 
+    = f.label :name_cont, '食材名', class: 'col-sm-2 col-form-label'
+    .col-sm-10 
+      = f.search_field :name_cont, class: 'form-control', required: true
   .form-group 
-    = f.label :name
-    = f.text_field :name, class: 'form-control', id: 'recipe_name'
-  .form-group 
-    = f.label :protein
-    = f.text_field :protein, class: 'form-control', id: 'recipe_protein'
-  .form-group 
-    = f.label :fat
-    = f.text_field :fat, class: 'form-control', id: 'recipe_fat'
-  .form-group 
-    = f.label :carbon_hydrate
-    = f.text_field :carbon_hydrate, class: 'form-control', id: 'recipe_carbon_hydrate'
-  .form-group 
-    = f.label :kcal
-    = f.text_field :kcal, class: 'form-control', id: 'recipe_kcal'
-  .form-group 
-    = f.label :amount
-    = f.text_field :amount, class: 'form-control', id: 'recipe_amount'
-  = f.submit nil, class: 'btn btn-primary'
+    = f.submit class: 'btn btn-outline-primary'
 
+  .mb-3 
+    = paginate @foods
+    = page_entries_info @foods
+
+  table.table.table-hover
+    h2 検索結果
+    thead.thead-default
+      tr 
+        th= Food.human_attribute_name(:name)
+        th= Food.human_attribute_name(:protein)
+        th= Food.human_attribute_name(:fat)
+        th= Food.human_attribute_name(:carbon_hydrate)
+        th= Food.human_attribute_name(:kcal)
+        th= Food.human_attribute_name(:amount)
+        th
+
+    tbody 
+      -unless @foods.blank? 
+        - @foods.each do |food|
+              tr 
+                td= food.name 
+                td= food.protein 
+                td= food.fat 
+                td= food.carbon_hydrate 
+                td= food.kcal
+                td
+                  = f.text_field :amount, value: 100
+                  = link_to '追加', new_cooks_recipe_path(food), class: 'btn btn-primary mr-1'
+    
+  .mb-3 
+  table.table.table-hover
+    h2 合計
+    thead.thead-default
+      tr 
+        th= Food.human_attribute_name(:name)
+        th= Food.human_attribute_name(:protein)
+        th= Food.human_attribute_name(:fat)
+        th= Food.human_attribute_name(:carbon_hydrate)
+        th= Food.human_attribute_name(:kcal)
+        th= Food.human_attribute_name(:amount)
+        th
+
+    tbody 
+      

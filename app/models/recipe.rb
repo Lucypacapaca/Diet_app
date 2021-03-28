@@ -1,5 +1,5 @@
 class Recipe < ApplicationRecord
-    paginates_per 100
+    paginates_per 10
     has_many :foods, through: :food_recipes
     has_many :food_recipes
 

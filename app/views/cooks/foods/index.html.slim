@@ -1,9 +1,9 @@
 h1 食材一覧
 = link_to '食材追加', new_cooks_food_path,  class: 'btn btn-primary mr-3'
 
-/= search_form_for @q, url: cooks_foods_path, class: 'mb-5' do |f|
+= search_form_for @q, url: cooks_foods_path, class: 'mb-5' do |f|
   .form-group.row 
-    = f.label :name_cont, '食品名', class: 'col-sm-2 col-form-label'
+    = f.label :name_cont, '食材名', class: 'col-sm-2 col-form-label'
     .col-sm-10 
       = f.search_field :name_cont, class: 'form-control', required: true
   .form-group 
