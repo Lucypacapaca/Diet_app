@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :recipes
   end
 
+  get '/cooks/recipes/new/food_search', to: 'cooks/recipes#food_search'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

@@ -5,55 +5,15 @@ h1 レシピ登録
     - recipe.errors.full_messages.each do |message|
       li= message
 
-= search_form_for @q, url: cooks_recipes_path, class: 'mb-5' do |f|
-  .form-group.row 
-    = f.label :name_cont, '食材名', class: 'col-sm-2 col-form-label'
-    .col-sm-10 
-      = f.search_field :name_cont, class: 'form-control', required: true
+/= form_with model: @recipe, url: cooks_recipes_path, local: true do |f| 
   .form-group 
-    = f.submit class: 'btn btn-outline-primary'
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'recipe_name'
+  = f.submit nil, class: 'btn btn-primary'
+/form
+  input formaction="/cooks/recipes/new/food_search" formmethod="GET" type="submit" value="レシピ名" 
 
-  .mb-3 
-    = paginate @foods
-    = page_entries_info @foods
-
-  table.table.table-hover
-    h2 検索結果
-    thead.thead-default
-      tr 
-        th= Food.human_attribute_name(:name)
-        th= Food.human_attribute_name(:protein)
-        th= Food.human_attribute_name(:fat)
-        th= Food.human_attribute_name(:carbon_hydrate)
-        th= Food.human_attribute_name(:kcal)
-        th= Food.human_attribute_name(:amount)
-        th
-
-    tbody 
-      -unless @foods.blank? 
-        - @foods.each do |food|
-              tr 
-                td= food.name 
-                td= food.protein 
-                td= food.fat 
-                td= food.carbon_hydrate 
-                td= food.kcal
-                td
-                  = f.text_field :amount, value: 100
-                  = link_to '追加', new_cooks_recipe_path(food), class: 'btn btn-primary mr-1'
-    
-  .mb-3 
-  table.table.table-hover
-    h2 合計
-    thead.thead-default
-      tr 
-        th= Food.human_attribute_name(:name)
-        th= Food.human_attribute_name(:protein)
-        th= Food.human_attribute_name(:fat)
-        th= Food.human_attribute_name(:carbon_hydrate)
-        th= Food.human_attribute_name(:kcal)
-        th= Food.human_attribute_name(:amount)
-        th
-
-    tbody 
+form action="/cooks/recipes/new/food_search" method="get" 
+ input name="レシピ名" type="text"
+ input type="submit" value="決定" 
       

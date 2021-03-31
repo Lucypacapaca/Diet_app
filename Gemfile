@@ -78,3 +78,5 @@ gem 'simple_calendar', '~> 2.0'
 
 #ページネーション用
 gem 'kaminari'
+
+gem "mimemagic", "~> 0.3.10"

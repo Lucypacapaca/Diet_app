@@ -5,6 +5,11 @@ class Cooks::RecipesController < ApplicationController
     @foods = @q.result(distinct: true).page(params[:page])
   end
 
+  def food_search
+    @qf = Food.ransack(params[:qf])
+    @foods = @qf.result(distinct: true).page(params[:page])
+  end
+
   def show
     @recipe = Recipe.find(params[:id])
   end
