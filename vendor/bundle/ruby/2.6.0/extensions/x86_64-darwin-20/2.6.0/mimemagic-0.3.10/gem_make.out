@@ -1,3 +1,0 @@
-current directory: /Users/vicugnapacos/training_app4/vendor/bundle/ruby/2.6.0/gems/mimemagic-0.3.10/ext/mimemagic
-/Users/vicugnapacos/.rbenv/versions/2.6.3/bin/ruby -I/Users/vicugnapacos/.rbenv/versions/2.6.3/lib/ruby/site_ruby/2.6.0 -rrubygems /Users/vicugnapacos/training_app4/vendor/bundle/ruby/2.6.0/gems/rake-13.0.3/exe/rake RUBYARCHDIR\=/Users/vicugnapacos/training_app4/vendor/bundle/ruby/2.6.0/extensions/x86_64-darwin-20/2.6.0/mimemagic-0.3.10 RUBYLIBDIR\=/Users/vicugnapacos/training_app4/vendor/bundle/ruby/2.6.0/extensions/x86_64-darwin-20/2.6.0/mimemagic-0.3.10
-mkdir -p /Users/vicugnapacos/training_app4/vendor/bundle/ruby/2.6.0/extensions/x86_64-darwin-20/2.6.0/mimemagic-0.3.10/mimemagic
