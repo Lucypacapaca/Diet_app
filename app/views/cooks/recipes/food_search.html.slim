@@ -5,13 +5,17 @@ h1 レシピ作成
     - recipe.errors.full_messages.each do |message|
       li= message
 
-= search_form_for @qf, url: cooks_recipes_path, class: 'mb-5' do |f|
-  .form-group.row 
-    = f.label :name_cont, '食材名', class: 'col-sm-2 col-form-label'
-    .col-sm-10 
-      = f.search_field :name_cont, class: 'form-control', required: true
-  .form-group 
-    = f.submit class: 'btn btn-outline-primary'
+/ = search_form_for @qf, url: cooks_recipes_new_food_search_path, class: 'mb-5' do |f|
+/   .form-group.row 
+/     = f.label :name_cont, '食材名', class: 'col-sm-2 col-form-label'
+/     .col-sm-10 
+/       = f.search_field :name_cont, class: 'form-control', required: true
+/   .form-group 
+/     = f.submit class: 'btn btn-outline-primary'
+h2 食材検索
+= form_tag(cooks_recipes_new_food_search_path, :method => 'get') do 
+  = text_field_tag :food_search, params[:food_search], class: "form-control",  id: "food_search_area", placeholder: "食材名を入力"
+  = submit_tag '検索'
 
   .mb-3 
     = paginate @foods
@@ -39,8 +43,8 @@ h1 レシピ作成
                 td= food.carbon_hydrate 
                 td= food.kcal
                 td
-                  = f.text_field :amount, value: 100
-                  = link_to '追加', cooks_recipes_new_food_search_path(food), class: 'btn btn-primary mr-1'
+                  = text_field :amount, value: 100
+                  = link_to '追加', cooks_recipes_new_food_search_path(food.id), class: 'btn btn-primary mr-1'
     
   .mb-3 
   table.table.table-hover
@@ -53,6 +57,9 @@ h1 レシピ作成
         th= Food.human_attribute_name(:carbon_hydrate)
         th= Food.human_attribute_name(:kcal)
         th= Food.human_attribute_name(:amount)
-        th
-
-    tbody 
+        tr 
+              / td= @cooks.sum(:protein) 
+              / td= @cooks.sum(:fat) 
+              / td= @cooks.sum(:carbon_hydrate)  
+              / td= @cooks.sum(:protein)*4 + @cooks.sum(:fat)*9 + @cooks.sum(:carbon_hydrate)*4 
+              / td

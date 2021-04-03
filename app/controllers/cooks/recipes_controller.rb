@@ -6,8 +6,9 @@ class Cooks::RecipesController < ApplicationController
   end
 
   def food_search
-    @qf = Food.ransack(params[:qf])
-    @foods = @qf.result(distinct: true).page(params[:page])
+    # @qf = Food.ransack(params[:qf])
+    # @foods = @qf.result(distinct: true).page(params[:page])
+    @foods = Food.where('foods.name LIKE(?)', "%#{params[:food_search]}%").page(params[:page])
   end
 
   def show
