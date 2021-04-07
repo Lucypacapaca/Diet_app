@@ -26,6 +26,11 @@ class CooksController < ApplicationController
     @cooks = current_user.cooks.order(start_time: :desc).where(start_time: start_time_string_date)
     logger.info(start_time_string_date)
 
+    # @user_protein = require_protein.protein
+    # @user_fat = require_fat.fat
+    # @user_carbon_hydrate = require_carbon_hydrate.carbon_hydrate
+    # @user_kcal = require_kcal.kcal
+
     unless params[:date].blank?
       logger.debug(params[:date][:year])
       logger.debug(params[:date][:month])
@@ -65,7 +70,7 @@ class CooksController < ApplicationController
     @cook = current_user.cooks.new(cook_params)
 
     if @cook.save
-      redirect_to cooks_path, notice: "食品「#{@cook.name}」を登録しました"
+      redirect_to new_cook_path, notice: "食品「#{@cook.name}」を登録しました"
     else
       render :new
     end

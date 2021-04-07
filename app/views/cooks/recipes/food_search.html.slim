@@ -16,13 +16,14 @@ h2 食材検索
 = form_tag(cooks_recipes_new_food_search_path, :method => 'get') do 
   = text_field_tag :food_search, params[:food_search], class: "form-control",  id: "food_search_area", placeholder: "食材名を入力"
   = submit_tag '検索'
-
+  p
+   - @foods.present? 
   .mb-3 
     = paginate @foods
     = page_entries_info @foods
 
   table.table.table-hover
-    h2 検索結果
+    h2 食材一覧
     thead.thead-default
       tr 
         th= Food.human_attribute_name(:name)
@@ -34,7 +35,6 @@ h2 食材検索
         th
 
     tbody 
-      -unless @foods.blank? 
         - @foods.each do |food|
               tr 
                 td= food.name 
@@ -43,12 +43,12 @@ h2 食材検索
                 td= food.carbon_hydrate 
                 td= food.kcal
                 td
-                  = text_field :amount, value: 100
-                  = link_to '追加', cooks_recipes_new_food_search_path(food.id), class: 'btn btn-primary mr-1'
+                  = text_field :amount, value = "100"
+                  = link_to '追加', cooks_recipes_new_food_search_path(flag: true), class: 'btn btn-primary mr-1'
     
   .mb-3 
   table.table.table-hover
-    h2 合計
+    h2 レシピの材料
     thead.thead-default
       tr 
         th= Food.human_attribute_name(:name)
@@ -58,8 +58,11 @@ h2 食材検索
         th= Food.human_attribute_name(:kcal)
         th= Food.human_attribute_name(:amount)
         tr 
-              / td= @cooks.sum(:protein) 
-              / td= @cooks.sum(:fat) 
-              / td= @cooks.sum(:carbon_hydrate)  
-              / td= @cooks.sum(:protein)*4 + @cooks.sum(:fat)*9 + @cooks.sum(:carbon_hydrate)*4 
-              / td
+              td= @food_recipe.pluck(:name) 
+              td= @food_recipe.pluck(:protein)
+              td= @food_recipe.pluck(:fat)
+              td= @food_recipe.pluck(:carbon_hydrate)
+              td= @food_recipe.pluck(:kcal)
+              td
+                /= link_to '編集', edit_cooks_food_path(food), class: 'btn btn-primary mr-3'
+                = link_to '削除', cooks_recipes_new_food_search_path(@food_recipe), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'   

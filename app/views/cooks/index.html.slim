@@ -5,7 +5,6 @@
 
 h1 食事
 
-= link_to 'レシピ追加', cooks_foods_path,  class: 'btn btn-primary mr-3'
 = link_to '食事登録', new_cook_path, class: 'btn btn-primary mr-3'
 /= link_to 'お気に入り', new_cook_path, class: 'btn btn-primary'
 
@@ -54,6 +53,21 @@ table.table.table-hover
               td= @cooks.sum(:carbon_hydrate)  
               td= @cooks.sum(:protein)*4 + @cooks.sum(:fat)*9 + @cooks.sum(:carbon_hydrate)*4 
               td
+      / .mb-3 
+      / table.table.table-hover
+      /   h2 目標
+      /   thead.thead-default
+      /     tr 
+      /       th= User.human_attribute_name(:protein)
+      /       th= User.human_attribute_name(:fat)
+      /       th= User.human_attribute_name(:carbon_hydrate)
+      /       th= User.human_attribute_name(:kcal)
+      /       tr 
+      /         td= @user_protein
+      /         td= @user_fat
+      /         td= @user_carbon_hydrate
+      /         td= @user_kcal
+              
         
 
 

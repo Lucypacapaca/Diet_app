@@ -6,7 +6,7 @@ h1 レシピ
     = f.label :name
     = f.text_field :name, class: 'form-control', id: 'recipe_name'
 
-
+p
 h2 レシピ検索
 = search_form_for @q, url: cooks_recipes_path, class: 'mb-5' do |f|
   .form-group.row 
@@ -16,11 +16,12 @@ h2 レシピ検索
   .form-group 
     = f.submit class: 'btn btn-outline-primary'
 
+
 .mb-3 
   = paginate @recipes
   = page_entries_info @recipes
 table.table.table-hover
-  h2 検索結果
+  h2 レシピ一覧
   thead.thead-default
     tr 
       th= Recipe.human_attribute_name(:name)

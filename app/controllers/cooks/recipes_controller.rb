@@ -9,6 +9,19 @@ class Cooks::RecipesController < ApplicationController
     # @qf = Food.ransack(params[:qf])
     # @foods = @qf.result(distinct: true).page(params[:page])
     @foods = Food.where('foods.name LIKE(?)', "%#{params[:food_search]}%").page(params[:page])
+    # @cal_protein = @food.protein * @food.params[:amount] / 100
+    # @cal_fat = fat * amount / 100
+    # @cal_carbon_hydrate = carbon_hydrate * amount / 100
+    # @kcal = cal_protein * 4 + cal_fat * 9 + carbon_hydrate * 4
+    @food_recipe = Food.where(flag: true) 
+    #@cal_protein = Food.select
+  end
+
+  def cal_protein
+    @cal_protein = Food(:protein) * :amount /100
+  end
+
+  def food_search_show
   end
 
   def show
