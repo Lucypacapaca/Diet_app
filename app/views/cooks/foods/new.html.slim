@@ -1,4 +1,5 @@
 h1 食材の登録
+h5 ※100g当たりの数値を記入してください
 
 - if @food.errors.present?
   ul#error_explanation 
@@ -18,10 +19,10 @@ h1 食材の登録
   .form-group 
     = f.label :carbon_hydrate
     = f.text_field :carbon_hydrate, class: 'form-control', id: 'food_carbon_hydrate'
-  .form-group 
+  /.form-group 
     = f.label :kcal
     = f.text_field :kcal, value: @kcal, class: 'form-control', id: 'food_kcal'
-  .form-group 
+  /.form-group 
     = f.label :amount
     = f.text_field :amount, class: 'form-control', id: 'food_amount'
   = f.submit nil, class: 'btn btn-primary'

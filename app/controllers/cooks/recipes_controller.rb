@@ -13,8 +13,29 @@ class Cooks::RecipesController < ApplicationController
     # @cal_fat = fat * amount / 100
     # @cal_carbon_hydrate = carbon_hydrate * amount / 100
     # @kcal = cal_protein * 4 + cal_fat * 9 + carbon_hydrate * 4
-    @food_recipe = Food.where(flag: true) 
+    @food_recipes = Food.where(flag: true)
     #@cal_protein = Food.select
+
+    
+    logger.info(Food.find_by(flag: false))
+
+    # @user_protein = require_protein.protein
+    # @user_fat = require_fat.fat
+    # @user_carbon_hydrate = require_carbon_hydrate.carbon_hydrate
+    # @user_kcal = require_kcal.kcal
+
+    unless params[:flag].blank?
+      logger.debug(params[:flag])
+    end
+
+    if :flag == false
+      #day = params[:start_time].to_i
+      logger.info "ラーメン"
+      #logger.info()
+    end
+
+
+
   end
 
   def cal_protein

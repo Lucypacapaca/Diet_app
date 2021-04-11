@@ -39,7 +39,7 @@ table.table.table-hover
               td= recipe.protein 
               td= recipe.fat 
               td= recipe.carbon_hydrate 
-              td= recipe.kcal
+              td= recipe.protein.to_i*4 + recipe.fat.to_i*9 + recipe.carbon_hydrate.to_i*4  
               td
                 = link_to '編集', edit_cooks_recipe_path(recipe), class: 'btn btn-primary mr-3'
                 = link_to '削除', cooks_recipes_path(recipe), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'    

@@ -43,8 +43,9 @@ h2 食材検索
                 td= food.carbon_hydrate 
                 td= food.kcal
                 td
-                  = text_field :amount, value = "100"
-                  = link_to '追加', cooks_recipes_new_food_search_path(flag: true), class: 'btn btn-primary mr-1'
+                  = text_field :amount, value = "500"
+                  /= button_to '追加', cooks_recipes_new_food_search_path(:flag => true, food.amount => :amount), class: 'btn btn-primary mr-5'
+                  = button_to '追加', cooks_recipes_new_food_search_path(@food_recipe), food.amount => :amount, class: 'btn btn-primary mr-5'
     
   .mb-3 
   table.table.table-hover
@@ -57,12 +58,18 @@ h2 食材検索
         th= Food.human_attribute_name(:carbon_hydrate)
         th= Food.human_attribute_name(:kcal)
         th= Food.human_attribute_name(:amount)
-        tr 
-              td= @food_recipe.pluck(:name) 
-              td= @food_recipe.pluck(:protein)
-              td= @food_recipe.pluck(:fat)
-              td= @food_recipe.pluck(:carbon_hydrate)
-              td= @food_recipe.pluck(:kcal)
+        th= Food.human_attribute_name(:flag)
+        th 
+    tbody 
+        - @food_recipes.each do |food_recipe|
+            tr
+              td= food_recipe.name
+              td= food_recipe.protein.to_i * food_recipe.amount.to_i /  100
+              td= food_recipe.fat.to_i * food_recipe.amount.to_i /  100
+              td= food_recipe.carbon_hydrate.to_i * food_recipe.amount.to_i /  100
+              td= food_recipe.kcal.to_i * food_recipe.amount.to_i /  100
+              td= food_recipe.amount
+              td= food_recipe.flag
               td
                 /= link_to '編集', edit_cooks_food_path(food), class: 'btn btn-primary mr-3'
                 = link_to '削除', cooks_recipes_new_food_search_path(@food_recipe), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'   
