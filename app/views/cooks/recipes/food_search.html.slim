@@ -45,7 +45,8 @@ h2 食材検索
                 td
                   = text_field :amount, value = "500"
                   /= button_to '追加', cooks_recipes_new_food_search_path(:flag => true, food.amount => :amount), class: 'btn btn-primary mr-5'
-                  = button_to '追加', cooks_recipes_new_food_search_path(@food_recipe), food.amount => :amount, class: 'btn btn-primary mr-5'
+                  /= button_to '追加', cooks_recipes_new_food_search_path(@food_recipe), food.amount => :amount, class: 'btn btn-primary mr-5'
+                  = button_to '追加', { controller: 'cooks/recipes', action: 'food_search_update' }, { method: :get }, { food.flag => true }, { food.amount => :amount }, class: 'btn btn-primary mr-5'
     
   .mb-3 
   table.table.table-hover
@@ -64,7 +65,7 @@ h2 食材検索
         - @food_recipes.each do |food_recipe|
             tr
               td= food_recipe.name
-              td= food_recipe.protein.to_i * food_recipe.amount.to_i /  100
+              td= food_recipe.protein * food_recipe.amount /  100
               td= food_recipe.fat.to_i * food_recipe.amount.to_i /  100
               td= food_recipe.carbon_hydrate.to_i * food_recipe.amount.to_i /  100
               td= food_recipe.kcal.to_i * food_recipe.amount.to_i /  100

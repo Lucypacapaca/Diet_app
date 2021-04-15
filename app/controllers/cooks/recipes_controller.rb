@@ -1,8 +1,10 @@
 class Cooks::RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
-    @q = Food.ransack(params[:q])
-    @foods = @q.result(distinct: true).page(params[:page])
+    #@q = Food.ransack(params[:q])
+    #@foods = @q.result(distinct: true).page(params[:page])
+    @foods = Food.where('foods.name LIKE(?)', "%#{params[:food_search]}%").page(params[:page])
+    @food_recipes = Food.where(flag: false)
   end
 
   def food_search
@@ -13,11 +15,12 @@ class Cooks::RecipesController < ApplicationController
     # @cal_fat = fat * amount / 100
     # @cal_carbon_hydrate = carbon_hydrate * amount / 100
     # @kcal = cal_protein * 4 + cal_fat * 9 + carbon_hydrate * 4
-    @food_recipes = Food.where(flag: true)
+    @food_recipes = Food.where(flag: false)
     #@cal_protein = Food.select
 
     
     logger.info(Food.find_by(flag: false))
+    logger.info(params[:flag])
 
     # @user_protein = require_protein.protein
     # @user_fat = require_fat.fat
@@ -43,6 +46,11 @@ class Cooks::RecipesController < ApplicationController
   end
 
   def food_search_show
+  end
+
+  def food_search_update
+    @food_recipes.update!(food_recipe_params)
+    redirect_to new_cooks_recipe_path
   end
 
   def show

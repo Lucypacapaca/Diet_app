@@ -15,5 +15,68 @@ h1 レシピ登録
 
 form action="/cooks/recipes/new/food_search" method="get" 
  input name="レシピ名" type="text"
- input type="submit" value="決定" 
+ /input type="submit" value="決定" 
+
+p
+h2 食材検索
+= form_tag(new_cooks_recipe_path, :method => 'get') do 
+  = text_field_tag :food_search, params[:food_search], class: "form-control",  id: "food_search_area", placeholder: "食材名を入力"
+  = submit_tag '検索'
+  p
+   - @foods.present? 
+  .mb-3 
+    = paginate @foods
+    = page_entries_info @foods
+
+  table.table.table-hover
+    h2 食材一覧
+    thead.thead-default
+      tr 
+        th= Food.human_attribute_name(:name)
+        th= Food.human_attribute_name(:protein)
+        th= Food.human_attribute_name(:fat)
+        th= Food.human_attribute_name(:carbon_hydrate)
+        th= Food.human_attribute_name(:kcal)
+        th= Food.human_attribute_name(:amount)
+        th
+
+    tbody 
+        - @foods.each do |food|
+              tr 
+                td= food.name 
+                td= food.protein 
+                td= food.fat 
+                td= food.carbon_hydrate 
+                td= food.kcal
+                td
+                  = text_field :amount, value = "500"
+                  /= button_to '追加', cooks_recipes_new_food_search_path(:flag => true, food.amount => :amount), class: 'btn btn-primary mr-5'
+                  = button_to '追加', cooks_recipes_new_food_search_path(@food_recipe), :amount => :amount, food.flag => true, class: 'btn btn-primary mr-5'
+    
+  .mb-3 
+  table.table.table-hover
+    h2 レシピの材料
+    thead.thead-default
+      tr 
+        th= Food.human_attribute_name(:name)
+        th= Food.human_attribute_name(:protein)
+        th= Food.human_attribute_name(:fat)
+        th= Food.human_attribute_name(:carbon_hydrate)
+        th= Food.human_attribute_name(:kcal)
+        th= Food.human_attribute_name(:amount)
+        th= Food.human_attribute_name(:flag)
+        th 
+    tbody 
+        - @food_recipes.each do |food_recipe|
+            tr
+              td= food_recipe.name
+              td= food_recipe.protein.to_i * food_recipe.amount.to_i /  100
+              td= food_recipe.fat.to_i * food_recipe.amount.to_i /  100
+              td= food_recipe.carbon_hydrate.to_i * food_recipe.amount.to_i /  100
+              td= food_recipe.kcal.to_i * food_recipe.amount.to_i /  100
+              td= food_recipe.amount
+              td= food_recipe.flag
+              td
+                /= link_to '編集', edit_cooks_food_path(food), class: 'btn btn-primary mr-3'
+                = link_to '削除', cooks_recipes_new_food_search_path(@food_recipe), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'   
       

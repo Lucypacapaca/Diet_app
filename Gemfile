@@ -69,6 +69,7 @@ gem 'html2slim'
 
 #CSSを使えるようにする
 gem 'bootstrap'
+gem 'jquery-rails'
 
 #検索機能を使えるようにする
 gem 'ransack'
