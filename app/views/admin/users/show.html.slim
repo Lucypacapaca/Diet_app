@@ -68,10 +68,10 @@ table.table.table-hover
       tbody 
         
           tr 
-            td= require_protein.to_i
-            td= require_fat.to_i
-            td= require_carbon_hydrate.to_i
-            td= require_kcal.to_i
+            td= require_protein.round(1)
+            td= require_fat.round(1)
+            td= require_carbon_hydrate.round(1)
+            td= require_kcal.round(1)
 
 = link_to '編集', edit_admin_user_path, class: 'btn btn-primary mr-3'
 = link_to '削除', [:admin, @user], method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-danger'

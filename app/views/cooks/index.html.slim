@@ -43,30 +43,32 @@ table.table.table-hover
         h2 合計
         thead.thead-default
           tr 
+            th
             th= Cook.human_attribute_name(:protein)
             th= Cook.human_attribute_name(:fat)
             th= Cook.human_attribute_name(:carbon_hydrate)
             th= Cook.human_attribute_name(:kcal)
             tr 
-              td= @cooks.sum(:protein) 
-              td= @cooks.sum(:fat) 
-              td= @cooks.sum(:carbon_hydrate)  
-              td= @cooks.sum(:protein)*4 + @cooks.sum(:fat)*9 + @cooks.sum(:carbon_hydrate)*4 
+              td="合計"
+              td= @cooks.sum(:protein).round(1) 
+              td= @cooks.sum(:fat).round(1) 
+              td= @cooks.sum(:carbon_hydrate).round(1)  
+              td= (@cooks.sum(:protein)*4 + @cooks.sum(:fat)*9 + @cooks.sum(:carbon_hydrate)*4).round(1)
               td
-      / .mb-3 
-      / table.table.table-hover
-      /   h2 目標
-      /   thead.thead-default
-      /     tr 
-      /       th= User.human_attribute_name(:protein)
-      /       th= User.human_attribute_name(:fat)
-      /       th= User.human_attribute_name(:carbon_hydrate)
-      /       th= User.human_attribute_name(:kcal)
-      /       tr 
-      /         td= @user_protein
-      /         td= @user_fat
-      /         td= @user_carbon_hydrate
-      /         td= @user_kcal
+            tr 
+              td="目標"
+              td= require_protein.round(1)
+              td= require_fat.round(1)
+              td= require_carbon_hydrate.round(1)
+              td= require_kcal.round(1)
+            tr 
+              td="差分"
+              td= (@cooks.sum(:protein) - require_protein).round(1)
+              td= (@cooks.sum(:fat) - require_fat).round(1)
+              td= (@cooks.sum(:carbon_hydrate) - require_carbon_hydrate).round(1)
+              td= ((@cooks.sum(:protein)*4 + @cooks.sum(:fat)*9 + @cooks.sum(:carbon_hydrate)*4) - require_kcal).round(1)
+
+      
               
         
 
