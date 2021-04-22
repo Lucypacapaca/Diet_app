@@ -81,3 +81,9 @@ gem 'simple_calendar', '~> 2.0'
 gem 'kaminari'
 
 gem "mimemagic", "~> 0.3.10"
+
+#debug用
+gem "ruby-debug-ide"
+gem "debase"
+gem "rcodetools"
+gem "fastri"
