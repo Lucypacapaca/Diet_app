@@ -13,7 +13,7 @@ h1 レシピ登録
 /form
   input formaction="/cooks/recipes/new/food_search" formmethod="GET" type="submit" value="レシピ名" 
 
-form action="/cooks/recipes/new/food_search" method="get" 
+form action="/cooks/recipes/new/food_recipes" method="get" 
  input name="レシピ名" type="text"
  /input type="submit" value="決定" 
 
@@ -49,9 +49,12 @@ h2 食材検索
                 td= food.carbon_hydrate 
                 td= food.kcal
                 td
-                  = text_field :amount, value = "500"
+                  /= text_field :amount, value = "500"
                   /= button_to '追加', cooks_recipes_new_food_search_path(:flag => true, food.amount => :amount), class: 'btn btn-primary mr-5'
-                  = button_to '追加', cooks_recipes_new_food_search_path(@food_recipe), :amount => :amount, food.flag => true, class: 'btn btn-primary mr-5'
+                  /= button_to "追加", { controller: 'cooks/recipes', action: 'food_recipe_update' }, method: :patch, params: {amount:  :amount, food: true } , class: 'btn btn-primary mr-5'
+                  = button_to "追加", "/cooks/recipes/new/:id", method: :patch, params: {flag: true } , class: 'btn btn-primary mr-5'
+                  /form action="/cooks/recipes/new/food_recipes" method="get" 
+                    input name="レシピ名" type="text"
     
   .mb-3 
   table.table.table-hover
@@ -78,5 +81,5 @@ h2 食材検索
               td= food_recipe.flag
               td
                 /= link_to '編集', edit_cooks_food_path(food), class: 'btn btn-primary mr-3'
-                = link_to '削除', cooks_recipes_new_food_search_path(@food_recipe), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'   
+                /= link_to '削除', cooks_recipes_new_food_search_path(@food_recipe), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-primary mr-3'   
       

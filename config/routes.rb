@@ -4,10 +4,10 @@ Rails.application.routes.draw do
     resources :recipes
   end
 
-  get '/cooks/recipes/new/food_search', to: 'cooks/recipes#food_search'
-  get '/cooks/recipes/new/food_search/:id', to: 'cooks/recipes#food_search_show'
-  put '/cooks/recipes/new/food_search/:id', to: 'cooks/recipes#food_search_update'
-  patch '/cooks/recipes/new/food_search/:id', to: 'cooks/recipes#food_search_update'
+  #get '/cooks/recipes/new/food_search', to: 'cooks/recipes#food_search'
+  get '/cooks/recipes/new/:id', to: 'cooks/recipes#food_recipe_show'
+  put '/cooks/recipes/new/:id', to: 'cooks/recipes#food_recipe_update'
+  patch '/cooks/recipes/new/:id', to: 'cooks/recipes#food_recipe_update'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

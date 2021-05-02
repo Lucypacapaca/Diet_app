@@ -1,5 +1,8 @@
 h1 食品の登録
 
+.nav.justify-content-end 
+  = link_to '完了', cooks_path, class: 'btn btn-primary mr-6'
+
 /.nav.justify-content-end 
   = link_to '戻る', cooks_path, class: 'nav-link'
 
@@ -28,5 +31,3 @@ h1 食品の登録
     = f.label :start_time
     = f.date_select :start_time, class: 'form-control', id: 'cook_start_time'
   = f.submit "続けて記録する", class: 'btn btn-primary mr-3'
-
-  = link_to '完了', cooks_path, class: 'btn btn-primary mr-3'

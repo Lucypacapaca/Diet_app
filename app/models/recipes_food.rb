@@ -7,6 +7,6 @@ class RecipesFood < ApplicationRecord
     @cal_fat = fat * amount/100
     @cal_carbon_hydrate = carbon_hydrate * amount/100
     @cal_kcal = 4*cal_protein + 9*cal_fat + 4*cal_carbon_hydrate
-end
+  end
 
 end
